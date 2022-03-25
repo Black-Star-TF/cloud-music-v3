@@ -1,10 +1,3 @@
-<!--
- * @Author: BlackStar
- * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-19 23:29:00
- * @FilePath: /cloud-music-v3/src/components/list-item/PlaylistItem.vue
- * @Description: 
--->
 <template>
   <li
     class="playlist-item-box"
@@ -13,8 +6,8 @@
     <div class="cover-box">
       <div class="mask" />
       <img
-        :src="
-          $formatImgSize(playlist.picUrl ?? playlist.coverImgUrl, 1500, 1500)
+        v-lazy="
+          $formatImgSize(playlist.picUrl ?? playlist.coverImgUrl, 500, 500)
         "
       >
       <span class="play-count">{{ $formatCount(playlist.playCount) }}</span>
@@ -27,7 +20,7 @@
 </template>
 
 <script setup>
-import useFlexStyle from '@/hooks/useFlexStyle'
+import {useFlexStyle} from '@/hooks/index'
 const props = defineProps({
   playlist: {
     type: Object,

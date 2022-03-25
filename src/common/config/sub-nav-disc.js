@@ -1,8 +1,8 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:56:03
- * @LastEditTime: 2022-03-19 19:57:08
- * @FilePath: /cloud-music-v3/src/common/constant/sub-nav-disc.js
+ * @LastEditTime: 2022-03-24 21:22:36
+ * @FilePath: /cloud-music-v3/src/common/config/sub-nav-disc.js
  * @Description: 
  */
 import { INavItem } from "./aside-nav-list";

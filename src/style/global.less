@@ -2,14 +2,27 @@
 @import url("./theme/index.less");
 
 /* 滚动条样式 */
-::-webkit-scrollbar{
-width: 8px;
-height: 1px;
-position: absolute;
-right: 0;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 1px;
+  position: absolute;
+  right: 0;
 }
-::-webkit-scrollbar-thumb{
-width: 8px;
-border-radius: 4px;
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-radius: 4px;
 }
 
+// 页面大小
+@media screen and (max-width: 1300px) {
+  .page-box {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .page-box {
+    width: 1040px;
+    margin: 0 auto;
+  }
+}

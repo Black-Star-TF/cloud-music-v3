@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:21:28
- * @LastEditTime: 2022-03-19 19:22:32
+ * @LastEditTime: 2022-03-23 15:29:49
  * @FilePath: /cloud-music-v3/src/router/videoRoute/index.js
  * @Description: 
  */
@@ -16,15 +16,15 @@ const videoRoute = {
   children: [
     {
       path: '',
-      redirect: '/v/video'
+      redirect: '/v/mv'
     },
     {
       path: 'video',
-      component: ()=>import('@/views/discovery/recommend/index.vue')
+      component: ()=>import('@/views/video/video/index.vue')
     },
     {
       path: 'mv',
-      component: ()=>import('@/views/discovery/recommend/index.vue')
+      component: ()=>import('@/views/video/mv/index.vue')
     },
   ]
 }

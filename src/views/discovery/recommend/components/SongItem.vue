@@ -5,17 +5,34 @@
   >
     <div class="mask" />
     <img
+      v-lazy="$formatImgSize(song.album.picUrl, 120, 120)"
       class="cover-box"
-      :src="$formatImgSize(song.album.picUrl, 120, 120)"
     >
     <div class="index-box">
       {{ index > 9 ? index : `0${index}` }}
     </div>
     <div class="info-box">
-      <div class="name">
+      <span class="name">
         {{ song.name }}
-      </div>
-      <artist-list :artists="song.artists" />
+        <span
+          v-if="song?.alias.length > 0"
+          class="alia"
+        >
+          （{{ song.alias[0] }}）
+        </span>
+      </span>
+      <span class="artist-list">
+        <span
+          v-for="(artist, idx) in song.artists"
+          :key="artist.id"
+        >
+          <span @click="toArtistDetail(artist.id)">{{ artist.name }}</span>
+          <i
+            v-if="idx < song.artists.length - 1"
+            class="sp"
+          > | </i>
+        </span>
+      </span>
     </div>
     <div class="mv-box">
       <!-- <span v-if="song.mvid">mv</span> -->
@@ -25,11 +42,10 @@
 </template>
 
 <script setup>
-import useFlexStyle from '@/hooks/useFlexStyle'
-import ArtistList from "@/components/common/ArtistList.vue";
+import {useFlexStyle} from "@/hooks/index";
 const props = defineProps({
   song: {
-    type: Object ,
+    type: Object,
     required: true,
   },
   column: {
@@ -46,6 +62,9 @@ const props = defineProps({
   },
 });
 let style = useFlexStyle(props, 10);
+const toArtistDetail = id => {
+  console.log(id);
+};
 </script>
 
 <style lang="less" scoped>
@@ -88,7 +107,7 @@ let style = useFlexStyle(props, 10);
     width: 30px;
     text-align: center;
     z-index: 1;
-    color: #c6c6c6;
+    color: #bbb;
     font-size: 12px;
   }
   .info-box {
@@ -104,8 +123,26 @@ let style = useFlexStyle(props, 10);
       .ellipsis;
       line-height: 15px;
       font-size: 13.5px;
-      color: #333333;
+      color: #333;
       box-sizing: border-box;
+      .alia{
+        color: #999;
+      }
+    }
+    .artist-list {
+      .ellipsis;
+      font-size: 12px;
+      line-height: 15px;
+      color: #666;
+      span {
+        cursor: pointer;
+        &:hover {
+          color: #333;
+        }
+      }
+      .sp {
+        color: #999;
+      }
     }
   }
   .mv-box {

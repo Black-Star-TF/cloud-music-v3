@@ -1,10 +1,3 @@
-<!--
- * @Author: BlackStar
- * @Date: 2022-03-18 18:09:12
- * @LastEditTime: 2022-03-19 23:59:37
- * @FilePath: /cloud-music-v3/src/components/unique/PlaylistCategoryPanel.vue
- * @Description: 
--->
 <template>
   <div
     v-show="visible"
@@ -46,7 +39,7 @@
 </template>
 
 <script setup>
-import { watch, ref } from "vue";
+import { watch, ref, reactive } from "vue";
 const props = defineProps({
   categories: {
     type: Object,
@@ -60,10 +53,14 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-})
+});
 
-const flag = ref(false)
-const emits = defineEmits(["category-change", "update:visible"])
+const flag = ref(false);
+const emits = defineEmits([
+  "update:current-category",
+  "category-change",
+  "update:visible",
+]);
 
 const close = () => {
   if (flag.value) {
@@ -71,34 +68,36 @@ const close = () => {
     return;
   }
   emits("update:visible", false);
-}
+};
 
-watch(() => props.visible, val => {
-  if (val) {
-    flag.value = true;
-    window.addEventListener("click", close);
-  } else {
-    window.removeEventListener("click", close);
+watch(
+  () => props.visible,
+  val => {
+    if (val) {
+      flag.value = true;
+      window.addEventListener("click", close);
+    } else {
+      window.removeEventListener("click", close);
+    }
   }
-})
+);
 
-const getActive = category =>  {
+const getActive = category => {
   return category.name == props.currentCategory.name;
-}
+};
 
-const changeCategory = category =>  {
+const changeCategory = category => {
   if (!getActive(category)) {
+    emits("update:current-category", category);
     emits("category-change", category);
   }
   close();
-}
+};
 
 // 获取分类下的歌单类型列表
 const getTags = type => {
-  return props.categories.sub.filter(
-    item => item.category == type
-  );
-}
+  return props.categories.sub.filter(item => item.category == type);
+};
 </script>
 
 <style lang="less" scoped>
@@ -142,13 +141,13 @@ const getTags = type => {
       &-name {
         width: 100px;
         padding-left: 20px;
-        color: #bfbfbf;
+        color: #bbb;
       }
       &-list {
         flex: 1;
         display: flex;
         flex-wrap: wrap;
-        color: #333333;
+        color: #333;
         margin-bottom: 10px;
         .tag {
           width: 105px;

@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:21:28
- * @LastEditTime: 2022-03-19 20:18:38
+ * @LastEditTime: 2022-03-20 22:15:39
  * @FilePath: /cloud-music-v3/src/router/discoveryRoute/index.js
  * @Description:
  */
@@ -28,12 +28,18 @@ const discoveryRoutes = {
       component: () => import("@/views/discovery/playlist/index.vue"),
     },
     {
+      name: 'highQuality',
+      path: "playlist/high-quality",
+      component: () => import("@/views/discovery/playlist/high-quality/index.vue"),
+      props: true,
+    },
+    {
       path: "djradio",
       component: () => import("@/views/discovery/djradio/index.vue"),
     },
     {
       path: "toplist",
-      component: () => import("@/views/discovery/toplist/index.vue"),
+      component: () => import("@/views/discovery/top-list/index.vue"),
     },
     {
       path: "artist",

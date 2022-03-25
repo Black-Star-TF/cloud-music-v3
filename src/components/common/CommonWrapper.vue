@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-16 23:56:49
- * @LastEditTime: 2022-03-19 20:16:25
+ * @LastEditTime: 2022-03-20 16:09:22
  * @FilePath: /cloud-music-v3/src/components/common/CommonWrapper.vue
  * @Description: 
 -->
@@ -30,7 +30,7 @@
     height: 30px;
     line-height: 30px;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     .right {
       margin-left: auto;
     }

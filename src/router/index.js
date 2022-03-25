@@ -31,6 +31,37 @@ const routes = [
         path: "/playlist/:id",
         component: () => import("@/views/private-fm/index.vue"),
       },
+      {
+        path: '/radio/pay',
+        meta: {
+          title: "付费精品",
+        },
+        component: () => import("@/views/radio-pay/index.vue"),
+      },
+      {
+        path: '/mv/total',
+        name: 'totalMV',
+        meta: {
+          title: "全部MV",
+        },
+        component: () => import("@/views/total-mv/index.vue"),
+      },
+      {
+        path: '/mv/toplist',
+        name: 'MVTopList',
+        meta: {
+          title: "MV排行榜",
+        },
+        component: () => import("@/views/mv-top-list/index.vue"),
+      },
+      {
+        path: '/private-content',
+        meta: {
+          title: "独家放送",
+        },
+        component: () => import("@/views/private-content/index.vue"),
+      },
+      
     ],
   },
   // 视频详情页

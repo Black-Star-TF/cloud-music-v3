@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-19 23:00:08
+ * @LastEditTime: 2022-03-24 21:22:25
  * @FilePath: /cloud-music-v3/src/components/layout/AppHeader.vue
  * @Description: 
 -->
@@ -24,7 +24,7 @@ import { computed  } from "vue";
 import {useRoute} from 'vue-router'
 import HeaderTitle from "@/components/nav/HeaderTitle.vue"
 import HeaderNav from "@/components/nav/HeaderNav.vue";
-import subNavDisc from "@/common/constant/sub-nav-disc";
+import subNavDisc from "@/common/config/sub-nav-disc";
 const route = useRoute()
 
 const hasChildren = computed(() => !!route.meta.hasChildren)

@@ -1,8 +1,8 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-19 23:20:08
- * @FilePath: /cloud-music-v3/src/components/list-item/MvItem.vue
+ * @LastEditTime: 2022-03-23 16:18:23
+ * @FilePath: /cloud-music-v3/src/views/discovery/recommend/components/MvItem.vue
  * @Description: 
 -->
 <template>
@@ -11,20 +11,29 @@
     :style="style"
   >
     <div class="cover-box">
-      <img :src="mv.picUrl">
+      <img v-lazy="mv.picUrl">
       <span class="play-count">{{ $formatCount(mv.playCount) }}</span>
     </div>
     <div class="name-box">
       <span class="name">{{ mv.name }}</span>
     </div>
-    <artist-list :artists="mv.artists" />
+    <div class="artist-list">
+      <span
+        v-for="(artist, idx) in mv.artists"
+        :key="artist.id"
+      >
+        <span @click="toArtistDetail(artist.id)">{{ artist.name }}</span>
+        <i
+          v-if="idx < mv.artists.length - 1"
+          class="sp"
+        > | </i>
+      </span>
+    </div>
   </div>
 </template>
 
 <script setup>
-// import { getStyle } from "@/util/methods.js";
-import useFlexStyle from '@/hooks/useFlexStyle'
-import ArtistList from "@/components/common/ArtistList.vue";
+import {useFlexStyle} from "@/hooks/index";
 const props = defineProps({
   mv: {
     type: Object,
@@ -42,9 +51,12 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 
-let style = useFlexStyle(props)
+let style = useFlexStyle(props);
+const toArtistDetail = id => {
+  console.log(id);
+};
 </script>
 
 <style lang="less" scoped>
@@ -54,8 +66,23 @@ let style = useFlexStyle(props)
   margin-bottom: 40px;
   box-sizing: border-box;
   .box-style(60%);
-  .name-box{
+  .name-box {
     .ellipsis;
+  }
+  .artist-list {
+    .ellipsis;
+    font-size: 12px;
+    line-height: 15px;
+    color: #999;
+    span {
+      cursor: pointer;
+      &:hover {
+        color: #666;
+      }
+    }
+    .sp {
+      color: #333;
+    }
   }
 }
 </style>
