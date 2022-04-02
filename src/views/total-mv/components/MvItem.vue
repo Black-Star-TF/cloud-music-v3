@@ -10,10 +10,10 @@
       >
       <span class="play-count">{{ $formatCount(mv.playCount) }}</span>
     </div>
-    <span class="name-box">
+    <div class="name-box">
       <span class="name">{{ mv.name }}</span>
-    </span>
-    <span class="artists-box">
+    </div>
+    <div class="artists-box">
       <template
         v-for="(artist, idx) in mv.artists"
         :key="artist.id"
@@ -24,7 +24,7 @@
           class="sp"
         > | </i>
       </template>
-    </span>
+    </div>
   </div>
 </template>
 
@@ -120,7 +120,7 @@ const toArtistDetail = id => {
       }
     }
     .sp {
-      color: #333;
+      color: #999;
     }
   }
 }

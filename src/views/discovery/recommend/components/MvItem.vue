@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-23 16:18:23
+ * @LastEditTime: 2022-03-27 13:47:45
  * @FilePath: /cloud-music-v3/src/views/discovery/recommend/components/MvItem.vue
  * @Description: 
 -->
@@ -12,7 +12,9 @@
   >
     <div class="cover-box">
       <img v-lazy="mv.picUrl">
-      <span class="play-count">{{ $formatCount(mv.playCount) }}</span>
+      <span class="play-count">
+        <span class="iconfont icon-pause pause" />{{ $formatCount(mv.playCount) }}
+      </span>
     </div>
     <div class="name-box">
       <span class="name">{{ mv.name }}</span>
@@ -26,7 +28,7 @@
         <i
           v-if="idx < mv.artists.length - 1"
           class="sp"
-        > | </i>
+        >|</i>
       </span>
     </div>
   </div>
@@ -81,7 +83,8 @@ const toArtistDetail = id => {
       }
     }
     .sp {
-      color: #333;
+      color: #999;
+      margin: 0 5px;
     }
   }
 }

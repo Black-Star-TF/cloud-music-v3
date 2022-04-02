@@ -65,7 +65,7 @@ let style = useFlexStyle(props);
   .box-style(100%);
   .name-box {
     font-size: 14px;
-    .ellipsis(2);
+    .ellipsis_rows(2);
     .alia{
       color: #999;
     }

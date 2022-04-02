@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-16 19:18:05
- * @LastEditTime: 2022-03-20 22:31:41
+ * @LastEditTime: 2022-03-29 10:51:50
  * @FilePath: /cloud-music-v3/src/api/playlist.js
  * @Description: 歌单相关接口
  */
@@ -63,9 +63,24 @@ export function getHighQualityPlaylists({ cat, limit, before = null }) {
   })
 }
 
+/**
+ * @description: 获取歌单所有歌曲
+ * @param { id } 歌单id
+ */
+export const getPlaylistSongs = params => request.get('/playlist/track/all', { params })
 
-export const getPlaylistSongs = ({id}) => request.get('/playlist/track/all', {
-  params: {
-    id
-  }
-})
+
+/**
+ * @description: 获取歌单详情
+ * @param {*}
+ * @return {*}
+ */
+export const getPlaylistDetail = params => request.get('/playlist/detail', { params })
+
+/**
+ * @description: 获取歌单评论
+ * @param { id } 歌单id
+ * @param { limit } 数量
+ * @param { offset } 偏移数量 , 用于分页
+ */
+export const getPlaylistComments = params => request.get('/comment/playlist', { params })

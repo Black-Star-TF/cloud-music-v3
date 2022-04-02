@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-17 14:17:02
- * @LastEditTime: 2022-03-24 22:22:39
+ * @LastEditTime: 2022-03-27 00:55:25
  * @FilePath: /cloud-music-v3/src/views/discovery/recommend/components/PrivateContentItem.vue
  * @Description: 
 -->
@@ -50,7 +50,7 @@ let style = useFlexStyle(props);
   box-sizing: border-box;
   .box-style(56%); // 比例
   .name-box{
-    .ellipsis(2);
+    .ellipsis_rows(2);
   }
 }
 </style>

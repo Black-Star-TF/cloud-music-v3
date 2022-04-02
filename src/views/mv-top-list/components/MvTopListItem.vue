@@ -13,10 +13,10 @@
       <!-- <span class="mv-pop">{{ $formatCount(mv.playCount) }}</span> -->
     </div>
     <div class="info-box">
-      <span class="name-box">
+      <div class="name-box">
         <span class="name">{{ mv.name }}</span>
-      </span>
-      <span class="artists-box">
+      </div>
+      <div class="artists-box">
         <template
           v-for="(artist, idx) in mv.artists"
           :key="artist.id"
@@ -27,7 +27,7 @@
             class="sp"
           > | </i>
         </template>
-      </span>
+      </div>
     </div>
   </div>
 </template>
@@ -110,6 +110,7 @@ let style = useFlexStyle(props);
   }
   .info-box {
     flex: 1;
+    min-width: 0;
     max-width: 160px;
     height: 100px;
     .name-box {
@@ -138,7 +139,7 @@ let style = useFlexStyle(props);
         }
       }
       .sp {
-        color: #333;
+        color: #999;
       }
     }
   }

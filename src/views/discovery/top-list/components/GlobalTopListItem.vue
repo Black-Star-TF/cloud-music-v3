@@ -10,7 +10,9 @@
           $formatImgSize(topList.coverImgUrl, 1000, 1000)
         "
       >
-      <span class="play-count">{{ $formatCount(topList.playCount) }}</span>
+      <span class="play-count">
+        <span class="iconfont icon-pause pause" />{{ $formatCount(topList.playCount) }}
+      </span>
     </div>
     <div class="name-box">
       <span class="name">{{ topList.name }}</span>
@@ -50,7 +52,7 @@ let style = useFlexStyle(props);
   box-sizing: border-box;
   .box-style(100%);
   .name-box {
-    .ellipsis(1);
+    .ellipsis;
   }
 }
 </style>

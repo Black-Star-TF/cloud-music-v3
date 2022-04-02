@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineAsyncComponent, markRaw } from "vue";
+import { ref, computed } from "vue";
 import { useFetchMore } from "@/hooks";
 import NewSongTab from "./components/NewSongTab.vue";
 import NewAlbumTab from "./components/NewAlbumTab.vue";

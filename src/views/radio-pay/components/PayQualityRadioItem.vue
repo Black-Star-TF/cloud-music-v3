@@ -18,7 +18,7 @@
         {{ radio.rcmdText }}
       </div>
       <div class="last-program">
-        {{ radio.lastProgramName }}
+        <span class="iconfont icon-pause pause" />{{ radio.lastProgramName }}
       </div>
       <div class="price">
         ¥ {{ getPrice() }}
@@ -85,6 +85,7 @@ const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
     }
   }
   .info-box{
+    min-width: 0;
     flex: 1;
     height: 135px;
     .name{
@@ -93,7 +94,7 @@ const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
       color: #333;
       margin: 15px 0;
       cursor: pointer;
-      .ellipsis(1);
+      .ellipsis;
       &:hover{
         color: #000;
       }
@@ -102,13 +103,19 @@ const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
       font-size: 12px;
       color: #bbb;
       margin: 5px 0;
-      .ellipsis(1);
+      .ellipsis;
     }
     .last-program{
       font-size: 12px;
       color: #bbb;
       margin: 5px 0;
-      .ellipsis(1);
+      .ellipsis;
+      .pause{
+        font-size: 12px;
+        position: relative;
+        margin-right: 3px;
+        font-weight: bold;
+      }
     }
     .price{
       font-weight: 500;

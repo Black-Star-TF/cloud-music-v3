@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-18 21:15:58
- * @LastEditTime: 2022-03-19 22:37:36
+ * @LastEditTime: 2022-03-26 21:27:21
  * @FilePath: /cloud-music-v3/src/components/common/CommonPagination.vue
  * @Description: 
 -->
@@ -122,7 +122,7 @@ const pagers = computed(() => {
   return array;
 })
 // 页码改变
-const emits = defineEmits('update:current-page','current-change');
+const emits = defineEmits(['update:current-page','current-change']);
 const changeCurrentPage = pageNo => {
   emits("update:current-page", pageNo);
   emits("current-change", pageNo);

@@ -78,7 +78,7 @@ let style = useFlexStyle(props);
     line-height: 20px;
     min-height: 20px;
     font-size: 14px;
-    .ellipsis(2);
+    .ellipsis_rows(2);
     .name {
       color: #333;
       cursor: pointer;

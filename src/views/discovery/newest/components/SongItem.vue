@@ -12,7 +12,9 @@
           class="alia"
         >（{{ song.alias[0] }}）</span>
       </span>
-      <span class="more">···</span>
+      <span
+        class="iconfont icon-more more"
+      />
     </span>
     
     <span class="artists">
@@ -83,6 +85,7 @@ const toArtistDetail = id => console.log(id);
   }
   .info-box {
     flex: 9;
+    min-width: 0;
     display: flex;
     align-items: center;
     .name-box{
@@ -96,9 +99,9 @@ const toArtistDetail = id => console.log(id);
     .more{
       margin-left: 5px;
       color: #999;
-      letter-spacing: -3px;
       visibility: hidden;
-      font-size: 20px;
+      cursor: pointer;
+      visibility: hidden;
       &:hover{
         color: #666;
       }

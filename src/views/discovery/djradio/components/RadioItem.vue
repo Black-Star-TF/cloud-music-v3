@@ -40,7 +40,7 @@ const props = defineProps({
   }
   .box-style(100%);
   .name-box {
-    .ellipsis(2);
+    .ellipsis_rows(2);
   }
   .cover-box{
     .mask{
@@ -66,7 +66,7 @@ const props = defineProps({
       color: #fff;
       z-index: 2;
       padding-left: 5px;
-      .ellipsis(1);
+      .ellipsis;
     }
   }
   .name-box{

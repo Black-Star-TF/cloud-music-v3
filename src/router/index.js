@@ -28,8 +28,8 @@ const routes = [
       videoRoute,
       ...myRoutes,
       {
-        path: "/playlist/:id",
-        component: () => import("@/views/private-fm/index.vue"),
+        path: "/playlist/detail",
+        component: () => import("@/views/playlist-detail/index.vue"),
       },
       {
         path: '/radio/pay',
@@ -61,7 +61,10 @@ const routes = [
         },
         component: () => import("@/views/private-content/index.vue"),
       },
-      
+      {
+        path: '/search',
+        component: () => import("@/views/search/index.vue"),
+      },
     ],
   },
   // 视频详情页

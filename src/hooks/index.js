@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-21 18:40:11
- * @LastEditTime: 2022-03-23 02:16:43
+ * @LastEditTime: 2022-03-27 15:48:41
  * @FilePath: /cloud-music-v3/src/hooks/index.js
  * @Description: 
  */
@@ -58,3 +58,5 @@ export const useFetchMore = (getData, loading, hasMore, setPageParams) => {
   });
   return wrapper
 }
+
+// export const useRouter

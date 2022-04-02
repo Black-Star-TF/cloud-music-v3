@@ -43,7 +43,7 @@ let style = useFlexStyle(props);
   box-sizing: border-box;
   .box-style(40%); // 比例
   .name-box{
-    .ellipsis(2);
+    .ellipsis_rows(2);
   }
 }
 </style>

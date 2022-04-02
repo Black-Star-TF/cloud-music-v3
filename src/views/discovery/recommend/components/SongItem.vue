@@ -1,48 +1,44 @@
 <template>
-  <li
-    class="song-item-box"
-    :style="style"
-  >
+  <li class="song-item-box" :style="style">
     <div class="mask" />
     <img
       v-lazy="$formatImgSize(song.album.picUrl, 120, 120)"
       class="cover-box"
-    >
+    />
     <div class="index-box">
       {{ index > 9 ? index : `0${index}` }}
     </div>
     <div class="info-box">
-      <span class="name">
-        {{ song.name }}
-        <span
-          v-if="song?.alias.length > 0"
-          class="alia"
-        >
+      <div class="name-box">
+        <span class="name">
+          {{ song.name }}
+        </span>
+        <span v-if="song?.alias.length > 0" class="alia">
           （{{ song.alias[0] }}）
         </span>
-      </span>
-      <span class="artist-list">
+      </div>
+      <div class="artist-box">
         <span
-          v-for="(artist, idx) in song.artists"
-          :key="artist.id"
-        >
-          <span @click="toArtistDetail(artist.id)">{{ artist.name }}</span>
-          <i
-            v-if="idx < song.artists.length - 1"
-            class="sp"
-          > | </i>
+          v-if="song.privilege.maxbr === 999000"
+          class="iconfont icon-sq sq"
+        />
+        <span class="artist-list">
+          <template v-for="(artist, idx) in song.artists" :key="artist.id">
+            <span @click="toArtistDetail(artist.id)">{{ artist.name }}</span>
+            <i v-if="idx < song.artists.length - 1" class="sp">|</i>
+          </template>
         </span>
-      </span>
+      </div>
     </div>
     <div class="mv-box">
-      <!-- <span v-if="song.mvid">mv</span> -->
-      <!-- TODO:mv图标 -->
+      <!-- mv图标 -->
+      <span v-if="song.mvid" class="iconfont icon-video mv" />
     </div>
   </li>
 </template>
 
 <script setup>
-import {useFlexStyle} from "@/hooks/index";
+import { useFlexStyle } from "@/hooks/index";
 const props = defineProps({
   song: {
     type: Object,
@@ -115,7 +111,7 @@ const toArtistDetail = id => {
     height: 60px;
     z-index: 1;
     overflow: hidden;
-    .name {
+    .name-box {
       margin-top: 15px;
       margin-bottom: 5px;
       width: 100%;
@@ -125,29 +121,52 @@ const toArtistDetail = id => {
       font-size: 13.5px;
       color: #333;
       box-sizing: border-box;
-      .alia{
+      .alia {
         color: #999;
       }
     }
-    .artist-list {
-      .ellipsis;
-      font-size: 12px;
-      line-height: 15px;
-      color: #666;
-      span {
-        cursor: pointer;
-        &:hover {
-          color: #333;
+    .artist-box {
+      height: 15px;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      .artist-list {
+        .ellipsis;
+        font-size: 12px;
+        line-height: 15px;
+        color: #666;
+        span {
+          cursor: pointer;
+          &:hover {
+            color: #333;
+          }
+        }
+        .sp {
+          color: #999;
+          margin: 0 5px;
         }
       }
-      .sp {
-        color: #999;
+      .sq {
+        color: #c3473a;
+        font-size: 18px;
+        margin-right: 5px;
       }
     }
   }
   .mv-box {
     width: 55px;
     height: 60px;
+    line-height: 55px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    .mv {
+      color: #c3473a;
+      font-size: 18px;
+      margin-left: 2px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   }
 }
 </style>

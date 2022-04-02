@@ -3,14 +3,21 @@
     class="high-quality-playlist-item-box"
     :style="style"
   >
-    <div class="cover-box">
+    <div
+      class="cover-box"
+      @click="toPlaylistDetail(playlist.id)"
+    >
       <div class="mask" />
       <img :src="$formatImgSize(playlist.coverImgUrl, 500, 500)">
-      <span class="play-count">{{ $formatCount(playlist.playCount) }}</span>
+      <span class="play-count">
+        <span class="iconfont icon-pause pause" />{{ $formatCount(playlist.playCount) }}
+      </span>
     </div>
     <div class="info-box">
       <div class="name">
-        {{ playlist.name }}
+        <span @click="toPlaylistDetail(playlist.id)">
+          {{ playlist.name }}
+        </span>
       </div>
       <div class="creator">
         by {{ playlist.creator.nickname }} 
@@ -29,6 +36,7 @@
 
 <script setup>
 import {useFlexStyle} from '@/hooks/index'
+import { toPlaylistDetail } from "@/util/methods";
 const props = defineProps({
   playlist: {
     type: Object,
@@ -60,6 +68,7 @@ let style = useFlexStyle(props);
   .cover-box{
     width: 130px;
     height: 130px;
+    flex-shrink: 0;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
@@ -79,6 +88,11 @@ let style = useFlexStyle(props);
       right: 10px;
       color: #fff;
       z-index: 3;
+      .pause{
+        font-size: 12px;
+        position: relative;
+        margin-right: 3px;
+      }
     }
     .mask {
       width: 100%;
@@ -96,20 +110,23 @@ let style = useFlexStyle(props);
     }
   }
   .info-box{
-    flex: 1;
+    width: calc(100% - 145px);
     .name{
+      width: 100%;
       margin-top: 20px;
-      display: inline-block;
-      .ellipsis(1);
-      cursor: pointer;
-      font-size: 14px;
-      color: #333;
-      &:hover{
-        color: #000;
+      span{
+        .ellipsis;
+        cursor: pointer;
+        font-size: 14px;
+        color: #333;
+        &:hover{
+          color: #000;
+        }
       }
     }
     .creator{
-      .ellipsis(1);
+      width: 100%;
+      .ellipsis;
       margin-top: 15px;
       display: inline-block;
       font-size: 12px;
@@ -125,7 +142,8 @@ let style = useFlexStyle(props);
       }
     }
     .more{
-      .ellipsis(1);
+      width: 100%;
+      .ellipsis;
       margin-top: 15px;
       font-size: 12px;
       color: #bbb;

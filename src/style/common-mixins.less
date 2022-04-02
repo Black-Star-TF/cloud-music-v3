@@ -1,6 +1,12 @@
-.ellipsis(@rows: 1) {
+.ellipsis_rows(@rows: 1) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: @rows;
   overflow: hidden;
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
