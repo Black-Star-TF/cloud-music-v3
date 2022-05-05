@@ -4,7 +4,7 @@
     :style="style"
   >
     <div class="cover-box">
-      <img v-lazy="$formatImgSize(album.picUrl, 1000, 1000)">
+      <img v-lazy="$formatImgSize(album.picUrl, 500, 500)">
       <div class="mask-box" />
     </div>
     <div class="name-box">

@@ -8,7 +8,7 @@
       <span class="name">
         <span v-html="markKeywords(artist.name, keywords)" />
         <span
-          v-if="artist.alias.length > 0"
+          v-if="artist?.alias?.length > 0"
           class="alia"
           v-html="markKeywords(`(${artist.alias[0]})`, keywords)"
         />

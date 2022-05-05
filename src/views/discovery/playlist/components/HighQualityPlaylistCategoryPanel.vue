@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-18 18:09:12
- * @LastEditTime: 2022-03-23 13:35:37
+ * @LastEditTime: 2022-04-06 17:17:45
  * @FilePath: /cloud-music-v3/src/views/discovery/playlist/components/HighQualityPlaylistCategoryPanel.vue
  * @Description: 
 -->
@@ -13,7 +13,7 @@
   >
     <div class="panel-header">
       <span
-        :class="{ active: getActive(categories.all) }"
+        :class="{ active: isActive(categories.all) }"
         @click="changeCategory(categories.all)"
       >
         {{ categories.all.name }}
@@ -26,7 +26,7 @@
         class="tag"
       >
         <span
-          :class="{ active: getActive(item) }"
+          :class="{ active: isActive(item) }"
           @click="changeCategory(item)"
         >{{ item.name }}</span>
       </li>
@@ -46,13 +46,13 @@ const props = defineProps({
     required: true,
   },
   currentCategory: {
-    type: Object,
+    type: String,
     required: true,
   },
-})
+});
 
-const flag = ref(false)
-const emits = defineEmits(["category-change", "update:visible", "update:current-category"])
+const flag = ref(false);
+const emits = defineEmits(["category-change", "update:visible", "update:current-category"]);
 
 const close = () => {
   if (flag.value) {
@@ -60,7 +60,7 @@ const close = () => {
     return;
   }
   emits("update:visible", false);
-}
+};
 
 watch(() => props.visible, val => {
   if (val) {
@@ -69,19 +69,19 @@ watch(() => props.visible, val => {
   } else {
     window.removeEventListener("click", close);
   }
-})
+});
 
-const getActive = category =>  {
-  return category.name == props.currentCategory.name;
-}
+const isActive = category =>  {
+  return category.name == props.currentCategory;
+};
 
 const changeCategory = category =>  {
-  if (!getActive(category)) {
-    emits("update:current-category", category)
-    emits("category-change", category);
+  if (!isActive(category)) {
+    emits("update:current-category", category.name);
+    emits("category-change", category.name);
   }
   close();
-}
+};
 </script>
 
 <style lang="less" scoped>

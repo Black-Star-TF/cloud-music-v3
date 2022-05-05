@@ -41,28 +41,27 @@
 </template>
 
 <script setup>
-import { getTopLists } from "@/api/top-list";
-import { getPlaylistSongs } from "@/api/playlist";
+import { playlistApi } from "@/api";
 import { reactive, ref, nextTick } from "vue";
 import axios from "axios";
 import CommonWrapper from "@/components/common/CommonWrapper";
 import OfficialTopListItem from "./components/OfficialTopListItem";
 import GlobalTopListItem from "./components/GlobalTopListItem";
-import CommonLoading from '@/components/common/CommonLoading'
+import CommonLoading from '@/components/common/CommonLoading';
 
-import {useColumn} from '@/hooks/index.js'
+import {useColumn} from '@/hooks/index.js';
 let column = useColumn(1060, 5, 4);
 
 const loading = ref(true);
 const topListData = reactive({
   ofTopLists: [],
   glTopLists: []
-})
+});
 const getTopListData = async () => {
-  const { list } = await getTopLists();
-  topListData.ofTopLists = list.slice(0, 4)
-  topListData.glTopLists= list.slice(4)
-  loading.value = false
+  const { list } = await playlistApi.topList();
+  topListData.ofTopLists = list.slice(0, 4);
+  topListData.glTopLists= list.slice(4);
+  loading.value = false;
 };
 getTopListData();
 </script>

@@ -59,8 +59,7 @@
 </template>
 
 <script setup>
-import CommonLoading from '@/components/common/CommonLoading'
-import { getPlaylistSongs } from "@/api/playlist";
+import { playlistApi } from "@/api";
 import { ref, reactive } from "@vue/reactivity";
 const props = defineProps({
   topList: {
@@ -69,14 +68,14 @@ const props = defineProps({
   },
 });
 
-let loading = ref(true)
-let songList = reactive([])
+let loading = ref(true);
+let songList = reactive([]);
 const getSong = async () => {
-  const {songs} = await getPlaylistSongs({ id: props.topList.id })
-  songList.push(...songs.slice(0, 5))
-  loading.value = false
-}
-getSong()
+  const {songs} = await playlistApi.songList({ id: props.topList.id });
+  songList.push(...songs.slice(0, 5));
+  loading.value = false;
+};
+getSong();
 
 const handleClick = () => {
   console.log(props.topList.id);

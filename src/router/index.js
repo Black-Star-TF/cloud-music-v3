@@ -28,7 +28,7 @@ const routes = [
       videoRoute,
       ...myRoutes,
       {
-        path: "/playlist/detail",
+        path: "/playlist/:id",
         component: () => import("@/views/playlist-detail/index.vue"),
       },
       {
@@ -64,6 +64,14 @@ const routes = [
       {
         path: '/search',
         component: () => import("@/views/search/index.vue"),
+      },
+      {
+        path: "/album/detail",
+        component: () => import("@/views/album-detail/index.vue"),
+      },
+      {
+        path: "/radio/detail",
+        component: () => import("@/views/radio-detail/index.vue"),
       },
     ],
   },

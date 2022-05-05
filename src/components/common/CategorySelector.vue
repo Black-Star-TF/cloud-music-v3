@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import {toRefs} from 'vue'
+import {toRefs} from 'vue';
 const props = defineProps({
   data: {
     type: Array,
@@ -54,15 +54,14 @@ const props = defineProps({
     type: String,
     default: '50'
   }
-})
+});
 
-const emits = defineEmits(['category-change', 'update:current-category'])
+const emits = defineEmits(['category-change', 'update:current-category']);
 
 const changeCategory = (params) => {
-  emits('update:current-category', {...props.currentCategory, ...params})
-  emits('category-change', {...props.currentCategory, ...params})
+  emits('update:current-category', {...props.currentCategory, ...params});
+  emits('category-change', {...props.currentCategory, ...params});
 };
-
 </script>
 
 <style lang="less" scoped>

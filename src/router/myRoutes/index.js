@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:21:28
- * @LastEditTime: 2022-03-19 19:22:20
+ * @LastEditTime: 2022-04-27 18:11:40
  * @FilePath: /cloud-music-v3/src/router/myRoutes/index.js
  * @Description: 
  */
@@ -40,6 +40,7 @@ const myRoutes = [
   },
   {
     path: '/my/cloud',
+    alias: '/download/downloading',
     meta: {
       title: "我的音乐云盘"
     },

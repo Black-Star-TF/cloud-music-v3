@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 import { markKeywords } from "@/util/methods";
 import { useFlexStyle } from "@/hooks/index";
 const props = defineProps({
@@ -77,7 +77,7 @@ const props = defineProps({
   },
 });
 
-const isMV = computed(() => props.video.type === 0)
+const isMV = computed(() => props.video.type === 0);
 
 let style = useFlexStyle(props);
 const toArtistDetail = id => {

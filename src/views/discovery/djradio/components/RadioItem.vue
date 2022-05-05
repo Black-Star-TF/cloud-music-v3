@@ -1,6 +1,9 @@
 <template>
   <li class="radio-item-box">
-    <div class="cover-box">
+    <div
+      class="cover-box"
+      @click="toRadioDetail(radio.id)"
+    >
       <div class="mask" />
       <img
         v-lazy="
@@ -18,13 +21,13 @@
 </template>
 
 <script setup>
+import { toRadioDetail } from '@/util/methods';
 const props = defineProps({
   radio: {
     type: Object,
     required: true,
   }
-})
-
+});
 </script>
 
 <style lang="less" scoped>

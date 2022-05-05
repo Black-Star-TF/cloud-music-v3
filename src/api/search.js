@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-26 13:27:03
- * @LastEditTime: 2022-03-26 18:12:55
+ * @LastEditTime: 2022-04-02 16:02:44
  * @FilePath: /cloud-music-v3/src/api/search.js
  * @Description: 搜索相关接口
  */
@@ -11,12 +11,12 @@ import request from "@/util/request";
  * @description: 获取搜索建议
  * @param { keywords} 关键词
  */
-export const getSearchSuggestion = params => request.get('/search/suggest', { params })
+export const suggestion = params => request.get('/search/suggest', { params });
 
 /**
  * @description: 热搜列表
  */
-export const getSearchHotContent = () => request.get('/search/hot/detail')
+export const hotContent = () => request.get('/search/hot/detail');
 
 /**
  * @description: 搜索接口
@@ -25,4 +25,10 @@ export const getSearchHotContent = () => request.get('/search/hot/detail')
  * @param { limit } 返回数量 , 默认为 30
  * @param { offset } 偏移数量，用于分页
  */
-export const getSearchData = params => request.get('/cloudsearch', { params })
+export const list = params => request.get('/cloudsearch', { params });
+
+export default {
+  suggestion,
+  hotContent,
+  list,
+};

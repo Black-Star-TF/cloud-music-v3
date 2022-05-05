@@ -6,31 +6,31 @@
   >
     <div class="panel-header">
       <span
-        :class="{ active: getActive(categories.all) }"
-        @click="changeCategory(categories.all)"
+        :class="{ active: getActive(data.all) }"
+        @click="changeCategory(data.all)"
       >
-        {{ categories.all.name }}
+        {{ data.all.name }}
       </span>
     </div>
     <div class="panel-main">
       <div
-        v-for="(value, key) in categories.types"
-        :key="key"
+        v-for="item in data.sub"
+        :key="item.id"
         class="type"
       >
         <div class="type-name">
-          {{ value }}
+          {{ item.name }}
         </div>
         <ul class="type-list">
           <li
-            v-for="item in getTags(key)"
-            :key="item.name"
+            v-for="tag in item.options"
+            :key="tag.name"
             class="tag"
           >
             <span
-              :class="{ active: getActive(item) }"
-              @click="changeCategory(item)"
-            >{{ item.name }}</span>
+              :class="{ active: getActive(tag) }"
+              @click="changeCategory(tag)"
+            >{{ tag.name }}</span>
           </li>
         </ul>
       </div>
@@ -41,7 +41,7 @@
 <script setup>
 import { watch, ref, reactive } from "vue";
 const props = defineProps({
-  categories: {
+  data: {
     type: Object,
     required: true,
   },
@@ -50,7 +50,7 @@ const props = defineProps({
     required: true,
   },
   currentCategory: {
-    type: Object,
+    type: String,
     required: true,
   },
 });
@@ -82,21 +82,16 @@ watch(
   }
 );
 
-const getActive = category => {
-  return category.name == props.currentCategory.name;
+const getActive = tag => {
+  return tag.name == props.currentCategory;
 };
 
-const changeCategory = category => {
-  if (!getActive(category)) {
-    emits("update:current-category", category);
-    emits("category-change", category);
+const changeCategory = tag => {
+  if (!getActive(tag)) {
+    emits("update:current-category", tag.name);
+    emits("category-change", tag.name);
   }
   close();
-};
-
-// 获取分类下的歌单类型列表
-const getTags = type => {
-  return props.categories.sub.filter(item => item.category == type);
 };
 </script>
 

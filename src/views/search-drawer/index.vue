@@ -19,9 +19,9 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useStore } from "vuex";
-import { useRouter } from 'vue-router'
-import SearchHotContent from "./components/SearchHotContent.vue";
-import SearchSuggestions from "./components/SearchSuggestions.vue";
+import { useRouter } from 'vue-router';
+import SearchHotContent from "./search-hot-content/index.vue";
+import SearchSuggestions from "./search-suggestions/index.vue";
 
 const props = defineProps({
   visible: {
@@ -49,7 +49,7 @@ const handleClose = e => {
   emits("close");
 };
 
-const router = useRouter()
+const router = useRouter();
 const handleSearch = keywords => {
   store.commit("app/setKeywords", keywords);
   router.push({
@@ -57,7 +57,7 @@ const handleSearch = keywords => {
     query: {
       keywords
     }
-  })
+  });
   emits("close");
 };
 

@@ -6,9 +6,7 @@
     >
       <!-- 轮播图 -->
       <slider-show
-        v-if="
-          banners.length > 0
-        "
+        v-if="banners.length > 0"
         :data="banners"
       />
       <!-- 推荐歌单 -->
@@ -16,28 +14,17 @@
         <template #left>
           <span
             class="section-title"
-            @click="
-              toPlaylist
-            "
+            @click="toPlaylist"
           >推荐歌单</span>
         </template>
         <template #content>
           <ul class="flex-box">
             <playlist-item
-              v-for="(
-                playlist,
-                index
-              ) in playlists"
-              :key="
-                playlist.id
-              "
-              :playlist="
-                playlist
-              "
+              v-for="(playlist,index) in playlists"
+              :key="playlist.id"
+              :playlist="playlist"
               :column="5"
-              :index="
-                index + 1
-              "
+              :index="index + 1"
             />
           </ul>
         </template>
@@ -47,28 +34,17 @@
         <template #left>
           <span
             class="section-title"
-            @click="
-              toPrivateContent
-            "
+            @click=" toPrivateContent"
           >独家放送</span>
         </template>
         <template #content>
           <ul class="flex-box">
             <private-content-item
-              v-for="(
-                privateContent,
-                index
-              ) in privateContents"
-              :key="
-                privateContent.id
-              "
-              :private-content="
-                privateContent
-              "
+              v-for="(privateContent,index) in privateContents"
+              :key="privateContent.id"
+              :private-content="privateContent"
               :column="3"
-              :index="
-                index + 1
-              "
+              :index="index + 1"
             />
           </ul>
         </template>
@@ -77,22 +53,16 @@
         <template #left>
           <span
             class="section-title"
-            @click="
-              toNewestMusic
-            "
+            @click="toNewestMusic"
           >最新音乐</span>
         </template>
         <template #content>
           <ul class="flex-box margin-bottom">
             <song-item
-              v-for="(
-                song, index
-              ) in songs"
+              v-for="(song, index) in songs"
               :key="song.id"
               :song="song"
-              :index="
-                index + 1
-              "
+              :index="index + 1"
             />
           </ul>
         </template>
@@ -107,14 +77,10 @@
         <template #content>
           <ul class="flex-box">
             <mv-item
-              v-for="(
-                mv, index
-              ) in mvs"
+              v-for="(mv, index) in mvs"
               :key="mv.id"
               :mv="mv"
-              :index="
-                index + 1
-              "
+              :index="index + 1"
             />
           </ul>
         </template>
@@ -125,29 +91,25 @@
 </template>
 
 <script setup>
-import { toRefs } from 'vue';
 import SliderShow from '@/components/common/SliderShow.vue';
 import PlaylistItem from './components/PlaylistItem.vue';
 import PrivateContentItem from './components/PrivateContentItem.vue';
 import SongItem from './components/SongItem.vue';
 import MvItem from './components/MvItem.vue';
-import { useData } from './index';
+import useData from './index';
 
-const {
-  state,
-  loading,
-  toPlaylist,
-  toNewestMusic,
-  toPrivateContent,
-  toMV,
-} = useData();
 const {
   banners,
   playlists,
   privateContents,
   songs,
   mvs,
-} = toRefs(state);
+  loading,
+  toPlaylist,
+  toNewestMusic,
+  toPrivateContent,
+  toMV,
+} = useData();
 </script>
 
 <style lang="less" scoped>

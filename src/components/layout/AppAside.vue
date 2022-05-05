@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-14 15:22:18
- * @LastEditTime: 2022-03-24 21:20:57
+ * @LastEditTime: 2022-04-27 18:24:49
  * @FilePath: /cloud-music-v3/src/components/layout/AppAside.vue
  * @Description: 
 -->
@@ -40,7 +40,6 @@ import {
   commonNavList,
   myMusicNavList,
 } from "@/common/config/aside-nav-list.js";
-
 </script>
 
 <style lang="less" scoped>

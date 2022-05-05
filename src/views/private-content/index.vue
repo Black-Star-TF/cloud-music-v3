@@ -17,11 +17,11 @@
 
 <script setup>
 import { ref, reactive } from "vue";
-import { getPrivateContentList } from "@/api/video";
+import { videoApi } from "@/api";
 import { useFetchMore, useColumn } from "@/hooks";
-import PrivateContentItem from './components/PrivateContentItem.vue'
+import PrivateContentItem from './components/PrivateContentItem.vue';
 
-let column = useColumn(1060, 4, 2)
+let column = useColumn(1060, 4, 2);
 let privateContentList = reactive([]);
 let loading = ref(true);
 let limit = 40;
@@ -29,7 +29,7 @@ let offset = ref(0);
 let hasMore = ref(true);
 const getPrivateContentData = async () => {
   loading.value = true;
-  const { result, more } = await getPrivateContentList({
+  const { result, more } = await videoApi.privateContent({
     limit,
     offset: offset.value,
   });
@@ -38,13 +38,15 @@ const getPrivateContentData = async () => {
   hasMore.value = more;
 };
 
-const wrapper = useFetchMore(
+const wrapper = ref();
+useFetchMore(
+  wrapper,
   getPrivateContentData,
   loading,
   hasMore,
   () => (offset.value += limit)
 );
-getPrivateContentData()
+getPrivateContentData();
 </script>
 
 <style lang="less" scoped>

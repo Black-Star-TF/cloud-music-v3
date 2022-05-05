@@ -14,14 +14,14 @@
           @click="openCategoryPanel"
         >
           {{
-            currentCategory.name == "全部歌单" ? "筛选" : currentCategory.name
+            currentCategory == "全部歌单" ? "筛选" : currentCategory
           }}
         </button>
         <high-quality-playlist-category-panel
           v-model:visible="panelVisible"
           v-model:current-category="currentCategory"
-          :categories="categoryDate"
-          @category-change="changeCategory"
+          :categories="categoryData"
+          @category-change="handleCategoryChange"
         />
       </template>
       <template #content>
@@ -29,7 +29,7 @@
           class="flex-box"
         >
           <high-quality-playlist-item
-            v-for="(playlist, index) in playlistDate"
+            v-for="(playlist, index) in list"
             :key="playlist.id"
             :playlist="playlist"
             :column="column"
@@ -43,78 +43,20 @@
 </template>
 
 <script setup>
-import {
-  getHighQualityPlaylistCategory,
-  getHighQualityPlaylists,
-} from "@/api/playlist";
-import CommonWrapper from "@/components/common/CommonWrapper.vue";
 import HighQualityPlaylistItem from "../components/HighQualityPlaylistItem.vue";
 import HighQualityPlaylistCategoryPanel from "../components/HighQualityPlaylistCategoryPanel.vue";
-import CommonLoading from '@/components/common/CommonLoading'
-import { ref, reactive } from "vue";
-import { useRoute } from "vue-router";
-
-import { useColumn, useFetchMore } from "@/hooks/index.js";
-let column = useColumn(1250, 3, 2);
-
-const route = useRoute();
-
-let currentCategory = ref({
-  name: "",
-});
-currentCategory.value = {
-  name: route.params.category || "全部歌单",
-};
-
-// 获取精品歌单标签列表
-let categoryDate = reactive({
-  all: { name: "全部歌单" },
-  sub: [],
-});
-
-const getHighQualityCategory = async () => {
-  const { tags } = await getHighQualityPlaylistCategory();
-  categoryDate.sub = tags;
-};
-getHighQualityCategory();
-
-// 获取精品歌单列表
-let loading = ref(true)
-let playlistDate = reactive([]);
-let hasMore = ref(true);
-let before = ref(null);
-const getPlaylistsData = async () => {
-  loading.value = true
-  const { playlists, lasttime, more } = await getHighQualityPlaylists({
-    cat: currentCategory.value.name,
-    limit: 24,
-    before: before.value,
-  });
-  before.value = lasttime;
-  hasMore.value = more;
-  playlistDate.push(...playlists);
-  loading.value = false;
-};
-getPlaylistsData();
-
-// 分类面板
-let panelVisible = ref(false);
-const openCategoryPanel = () => {
-  panelVisible.value = true;
-};
-
-const changeCategory = () => {
-  before.value = null;
-  hasMore.value = true;
-  playlistDate.length = 0;
-  getPlaylistsData();
-};
-
-const wrapper = useFetchMore(
-  getPlaylistsData,
+import useData from "./index";
+const {
   loading,
-  hasMore
-);
+  list,
+  column,
+  wrapper,
+  currentCategory,
+  categoryData,
+  panelVisible,
+  handleCategoryChange,
+  openCategoryPanel,
+} = useData();
 </script>
 
 <style lang="less" scoped>

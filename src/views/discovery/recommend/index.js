@@ -1,52 +1,39 @@
-/*
- * @Author: BlackStar
- * @Date: 2022-03-31 12:46:14
- * @LastEditTime: 2022-03-31 18:31:48
- * @FilePath: /cloud-music-v3/src/views/discovery/recommend/index.js
- * @Description: 
- */
-import { ref, reactive } from "vue";
+import { reactive, toRefs } from "vue";
 import { useRouter } from 'vue-router';
-import {
-  getRecommendBanner,
-  getRecommendPlaylist,
-  getRecommendSongs,
-  getRecommendPrivateContents,
-  getRecommendMVs,
-} from "@/api/recommend";
+import  { rcmdApi } from '@/api/index.js';
 
-
-export const useData = () => {
+export default function useData() {
   let state = reactive({
     banners: [],
     playlists: [],
     privateContents: [],
     songs: [],
-    mvs: []
+    mvs: [],
+    loading: true,
   });
 
   const getBanners = async () => {
-    const { banners } = await getRecommendBanner("0");
+    const { banners } = await rcmdApi.banner({ type: "0" });
     state.banners = banners;
   };
 
   const getPlaylists = async () => {
-    const { result } = await getRecommendPlaylist(10);
+    const { result } = await rcmdApi.playlist({ limit: 10 });
     state.playlists = result;
   };
 
   const getPrivateContents = async () => {
-    const { result } = await getRecommendPrivateContents();
+    const { result } = await rcmdApi.privateContent();
     state.privateContents = result;
   };
 
   const getSongs = async () => {
-    const { result } = await getRecommendSongs(10);
+    const { result } = await rcmdApi.song({ limit: 10 });
     state.songs = result.map(item => item.song);
   };
 
   const getMVs = async () => {
-    const { result } = await getRecommendMVs();
+    const { result } = await rcmdApi.mv();
     state.mvs = result;
   };
 
@@ -68,14 +55,18 @@ export const useData = () => {
     router.push('/v/mv');
   };
 
-  let loading = ref(true);
-  Promise.all([getBanners(), getPlaylists(), getPrivateContents(), getSongs(), getMVs()]).then(() => {
-    loading.value = false;
+  Promise.all([
+    getBanners(),
+    getPlaylists(),
+    getPrivateContents(),
+    getSongs(),
+    getMVs(),
+  ]).then(() => {
+    state.loading = false;
   });
 
   return {
-    state,
-    loading,
+    ...toRefs(state),
     toPlaylist,
     toNewestMusic,
     toPrivateContent,

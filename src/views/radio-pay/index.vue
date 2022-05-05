@@ -14,18 +14,18 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import { getPayQualityRadios } from "@/api/djradio";
-import PayQualityRadioItem from './components/PayQualityRadioItem.vue'
+import { radioApi } from '@/api';
+import PayQualityRadioItem from './components/PayQualityRadioItem.vue';
 
-const radioData = reactive([])
-const hasMore = ref(true)
+const radioData = reactive([]);
+const hasMore = ref(true);
 const getPayQualityRadioData = async () => {
-  const {data} = await getPayQualityRadios({limit:30,offset:0})
-  hasMore.value = data.hasMore
-  radioData.push(...data.list)
-}
+  const {data} = await radioApi.paid({limit:30,offset:0});
+  hasMore.value = data.hasMore;
+  radioData.push(...data.list);
+};
 // TODO: 鼠标滚到底部加载更多
-getPayQualityRadioData()
+getPayQualityRadioData();
 </script>
 
 <style lang="less" scoped>

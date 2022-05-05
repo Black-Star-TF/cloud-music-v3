@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-19 23:38:57
+ * @LastEditTime: 2022-05-05 11:26:29
  * @FilePath: /cloud-music-v3/src/components/nav/HeaderNav.vue
  * @Description: 
 -->
@@ -20,19 +20,24 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useRoute, useRouter } from 'vue-router'
+import { computed, watch } from "vue";
+import { useRoute, useRouter } from 'vue-router';
 const props = defineProps({
   subNavList: {
     type: Array,
     required: true,
   },
-})
-const route = useRoute()
-const parentPath = computed(() => route.matched[1].path)
-const router = useRouter()
-const getActive = path => route.fullPath == `${parentPath.value}/${path}`
-const toPath = path => router.push(`${parentPath.value}/${path}`)
+});
+const route = useRoute();
+const router = useRouter();
+const getActive = path => route.fullPath.startsWith(path);
+const toPath = path => {
+  router.push(path);
+};
+
+watch(route, (val) => {
+  console.log(route);
+});
 </script>
 
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="wrapper"
+    id="newestWrapper"
     class="newest-wrapper"
   >
     <div class="page-box">
@@ -30,24 +30,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useFetchMore } from "@/hooks";
-import NewSongTab from "./components/NewSongTab.vue";
-import NewAlbumTab from "./components/NewAlbumTab.vue";
+import { ref } from "vue";
+import NewSongTab from "./new-song/index.vue";
+import NewAlbumTab from "./new-album/index.vue";
 let currentTab = ref("new-song");
 const switchTab = tab => {
   currentTab.value = tab;
 };
-const albumTab = ref(null);
-const getData = () => {
-  if (currentTab.value == "new-album") {
-    albumTab.value.getMoreData();
-  }
-};
-
-let hasMore = computed(() => albumTab.value?.hasMore || ref(true));
-
-const wrapper = useFetchMore(getData, ref(false), hasMore);
 </script>
 
 <style lang="less" scoped>

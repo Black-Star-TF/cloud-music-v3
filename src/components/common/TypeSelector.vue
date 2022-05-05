@@ -32,21 +32,21 @@ const props = defineProps({
     }),
   },
   currentType: {
-    type: Object,
+    type: String,
     required: true,
   },
 });
 
 const getTypeActive = type => {
-  return type[props.options.id] === props.currentType[props.options.id];
+  return type[props.options.id] === props.currentType;
 };
 
 const emits = defineEmits(["type-change", "update:current-type"]);
 
 const changeType = type => {
   if (!getTypeActive(type)) {
-    emits("update:current-type", type);
-    emits("type-change", type);
+    emits("update:current-type", type[props.options.id]);
+    emits("type-change", type[props.options.id]);
   }
 };
 </script>

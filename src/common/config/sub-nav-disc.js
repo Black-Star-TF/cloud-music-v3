@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:56:03
- * @LastEditTime: 2022-03-24 21:22:36
+ * @LastEditTime: 2022-05-05 11:05:30
  * @FilePath: /cloud-music-v3/src/common/config/sub-nav-disc.js
  * @Description: 
  */
@@ -11,37 +11,37 @@ const subNavDisc = {
   "/discovery": [
     {
       name: "个性推荐",
-      path: "recommend",
+      path: "/recommend",
     },
     {
       name: "歌单",
-      path: "playlist",
+      path: "/playlist",
     },
     {
       name: "主播电台",
-      path: "djradio",
+      path: "/radio",
     },
     {
       name: "排行榜",
-      path: "toplist",
+      path: "/toplist",
     },
     {
       name: "歌手",
-      path: "artist",
+      path: "/artist",
     },
     {
       name: "最新音乐",
-      path: "newest",
+      path: "/newest",
     },
   ],
   "/v": [
     {
       name: "视频",
-      path: "video",
+      path: "/video",
     },
     {
       name: "MV",
-      path: "mv",
+      path: "/mv",
     },
   ],
   '/my/download': [

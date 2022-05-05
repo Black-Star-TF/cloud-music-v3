@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:21:28
- * @LastEditTime: 2022-03-20 22:15:39
+ * @LastEditTime: 2022-05-05 11:24:38
  * @FilePath: /cloud-music-v3/src/router/discoveryRoute/index.js
  * @Description:
  */
@@ -11,42 +11,39 @@ const discoveryRoutes = {
   name: "discovery",
   path: "/discovery",
   component: Discovery,
+  redirect: "/recommend",
   meta: {
     hasChildren: true,
   },
   children: [
     {
-      path: "",
-      redirect: "/discovery/recommend",
-    },
-    {
-      path: "recommend",
+      path: "/recommend",
       component: () => import("@/views/discovery/recommend/index.vue"),
     },
     {
-      path: "playlist",
+      path: "/playlist",
       component: () => import("@/views/discovery/playlist/index.vue"),
     },
     {
       name: 'highQuality',
-      path: "playlist/high-quality",
+      path: "/playlist/high-quality",
       component: () => import("@/views/discovery/playlist/high-quality/index.vue"),
       props: true,
     },
     {
-      path: "djradio",
+      path: "/radio",
       component: () => import("@/views/discovery/djradio/index.vue"),
     },
     {
-      path: "toplist",
+      path: "/toplist",
       component: () => import("@/views/discovery/top-list/index.vue"),
     },
     {
-      path: "artist",
+      path: "/artist",
       component: () => import("@/views/discovery/artist/index.vue"),
     },
     {
-      path: "newest",
+      path: "/newest",
       component: () => import("@/views/discovery/newest/index.vue"),
     },
   ],

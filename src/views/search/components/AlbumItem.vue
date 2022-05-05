@@ -1,5 +1,8 @@
 <template>
-  <li class="album-item-box">
+  <li
+    class="album-item-box"
+    @click="toAlbumDetail(album.id)"
+  >
     <div class="cover-box">
       <img
         :src="$formatImgSize(album.picUrl, 100, 100)"
@@ -11,17 +14,20 @@
       <span class="name">
         <span v-html="markKeywords(album.name,keywords)" />
         <span
-          v-if="album.alias.length > 0"
+          v-if="album?.alias?.length > 0"
           class="alia"
           v-html="markKeywords(`(${album.alias[0]})`,keywords)" 
         />
       </span>
     </div>
     <div class="artist-box">
-      <span class="artist">
+      <span
+        class="artist"
+        @click.stop
+      >
         <span v-html="markKeywords(album.artist.name,keywords)" />
         <span
-          v-if="album.artist.alias.length > 0"
+          v-if="album.artist?.alias?.length > 0"
           class="alia"
           v-html="markKeywords(`(${album.artist.alias[0]})`,keywords)" 
         />
@@ -31,7 +37,7 @@
 </template>
 
 <script setup>
-import { markKeywords } from '@/util/methods'
+import { markKeywords, toAlbumDetail } from '@/util/methods';
 const props = defineProps({
   album: {
     type: Object,

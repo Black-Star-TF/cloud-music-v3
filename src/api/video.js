@@ -5,5 +5,8 @@ import request from "@/util/request";
  * @param { limit } 返回数量 , 默认为 60
  * @return { offset } 偏移数量，用于分页
  */
-export const getPrivateContentList = params =>
-  request.get("/personalized/privatecontent/list", { params });
+export const privateContent = params => request.get("/personalized/privatecontent/list", { params });
+
+export default {
+  privateContent
+};

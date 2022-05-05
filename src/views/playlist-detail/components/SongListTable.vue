@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { react } from '@babel/types';
+import { reactive } from '@babel/types';
 import { ref, computed } from 'vue';
 const props = defineProps({
   tableColumns: {
@@ -105,10 +105,10 @@ const focusOn = index => {
 };
 
 let sortBy = ref('');
-let sortConfig = reactive({
-  sortBy: '', // name\artist\album
-  order: 0,   // 0 表示不排序； 1 表示升序； 2 表示降序
-});
+// let sortConfig = reactive({
+//   sortBy: '', // name\artist\album
+//   order: 0,   // 0 表示不排序； 1 表示升序； 2 表示降序
+// });
 
 const tableData = computed(() => {
   if(sortBy.value == 'name'){
