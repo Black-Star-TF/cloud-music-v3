@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-16 12:34:16
- * @LastEditTime: 2022-03-19 22:54:25
+ * @LastEditTime: 2022-05-11 10:43:45
  * @FilePath: /cloud-music-v3/src/components/common/SliderShow.vue
  * @Description: 
 -->
@@ -34,11 +34,15 @@
       <div
         class="btn prev"
         @click="switchToPrev"
-      />
+      >
+        <i class="iconfont icon-left" />
+      </div>
       <div
         class="btn next"
         @click="switchToNext"
-      />
+      >
+        <i class="iconfont icon-right" />
+      </div>
     </div>
     <div class="dot-wrapper">
       <div
@@ -70,20 +74,20 @@ const props = defineProps({
       cover: 'imageUrl'
     })
   }
-})
+});
 
 // 当前banner图片
 let currentIndex = ref(0);
 let startPosition = 0;
 let timer = 0;
 // 是否开始轮播
-let started = ref(false)
+let started = ref(false);
 
-const endPosition = computed(() => props.data.length - 1)
+const endPosition = computed(() => props.data.length - 1);
 const leftPosition = computed(() => (currentIndex.value - 1 + props.data.length) % props.data.length);
-const rightPosition = computed(() => (currentIndex.value + 1) % props.data.length)
+const rightPosition = computed(() => (currentIndex.value + 1) % props.data.length);
 
-onMounted(() => start()) 
+onMounted(() => start()); 
 
 // 开始轮播
 const start = () => {
@@ -92,15 +96,15 @@ const start = () => {
   timer = setInterval(() => {
     switchToNext();
   }, props.interval);
-}
+};
 // 暂停轮播
 const pause = () => {
   if (!started.value) return;
   started.value = false;
   clearInterval(timer);
-}
+};
 // 跳转到对应图片
-const switchTo = index => currentIndex.value = index
+const switchTo = index => currentIndex.value = index;
 
 // 获取图片位置，添加对应类名
 const getPosition = index => {
@@ -112,7 +116,7 @@ const getPosition = index => {
     return "right";
   }
   return "";
-}
+};
 // 下一张
 const switchToNext = () => {
   if (currentIndex.value === endPosition.value) {
@@ -120,7 +124,7 @@ const switchToNext = () => {
   } else {
     currentIndex.value++;
   }
-}
+};
 // 上一张
 const switchToPrev = () => {
   if (currentIndex.value === startPosition) {
@@ -128,17 +132,17 @@ const switchToPrev = () => {
   } else {
     currentIndex.value--;
   }
-}
+};
 // 点击图片，进行操作
 const handleClick = index => {
   if (index === currentIndex.value) {
     // console.log(props.data[index]);
   } else if (index === leftPosition.value) {
-    switchToPrev()
+    switchToPrev();
   } else if (index === rightPosition.value) {
-    switchToNext()
+    switchToNext();
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -218,15 +222,18 @@ const handleClick = index => {
     }
     .btn {
       opacity: 0;
-      width: 30px;
       height: 30px;
-      border-radius: 50%;
+      line-height: 30px;
       position: absolute;
       cursor: pointer;
       top: calc(50% - 15px);
       z-index: 20;
       transition: opacity .2s linear;
-      background-color: rgba(255, 255, 255, 0.3);
+      .iconfont {
+        font-size: 25px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.4);
+      }
       &.prev {
         left: 0;
       }

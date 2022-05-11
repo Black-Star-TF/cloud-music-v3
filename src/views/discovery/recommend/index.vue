@@ -15,7 +15,7 @@
           <span
             class="section-title"
             @click="toPlaylist"
-          >推荐歌单</span>
+          >推荐歌单<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -35,7 +35,7 @@
           <span
             class="section-title"
             @click=" toPrivateContent"
-          >独家放送</span>
+          >独家放送<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -54,7 +54,7 @@
           <span
             class="section-title"
             @click="toNewestMusic"
-          >最新音乐</span>
+          >最新音乐<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box margin-bottom">
@@ -72,7 +72,7 @@
           <span
             class="section-title"
             @click="toMV"
-          >推荐MV</span>
+          >推荐MV<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -118,6 +118,7 @@ const {
   overflow: overlay;
   .section-title {
     cursor: pointer;
+    display: inline-block;
     height: 30px;
     line-height: 30px;
     font-size: 16px;
@@ -125,6 +126,12 @@ const {
     color: #333;
     &:hover {
       color: #000;
+    }
+    .iconfont {
+      font-size: 20px;
+      display: inline-block;
+      transform: rotate(180deg);
+      vertical-align: -1.5px;
     }
   }
   .flex-box {

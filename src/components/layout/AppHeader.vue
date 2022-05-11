@@ -8,7 +8,7 @@
           :class="{'disabled': buttonDisabled.back}"
           @click="routeTo('back')"
         >
-          <i class="iconfont icon-back"></i>
+          <i class="iconfont icon-back" />
         </div>
         <div
           class="forward nav"
@@ -16,7 +16,7 @@
           :class="{'disabled': buttonDisabled.forward}"
           @click="routeTo('forward')"
         >
-          <i class="iconfont icon-back"></i>
+          <i class="iconfont icon-back" />
         </div>
       </div>
     </div>

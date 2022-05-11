@@ -10,7 +10,7 @@
           <span
             class="section-title"
             @click="toTotalMV('new')"
-          > 最新MV </span>
+          >最新MV<i class="iconfont icon-back" /></span>
         </template>
         <template #right>
           <type-selector
@@ -37,7 +37,7 @@
           <span
             class="section-title"
             @click="toTotalMV('hot')"
-          > 热播MV </span>
+          >热播MV<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -56,9 +56,7 @@
           <span
             class="section-title"
             @click="toTotalMV('exclusive')"
-          >
-            网易出品
-          </span>
+          >网易出品<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -77,7 +75,7 @@
           <span
             class="section-title"
             @click="toMVTopList"
-          > MV排行榜 </span>
+          >MV排行榜<i class="iconfont icon-back" /></span>
         </template>
         <template #right>
           <type-selector
@@ -141,6 +139,12 @@ const {
     cursor: pointer;
     &:hover {
       color: #000;
+    }
+    .iconfont {
+      font-size: 20px;
+      display: inline-block;
+      transform: rotate(180deg);
+      vertical-align: -1.5px;
     }
   }
   .flex-box {

@@ -1,13 +1,13 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-21 15:12:14
- * @LastEditTime: 2022-03-24 21:57:50
+ * @LastEditTime: 2022-05-11 14:33:24
  * @FilePath: /cloud-music-v3/src/views/discovery/artist/components/ArtistItem.vue
  * @Description: 
 -->
 <template>
   <li
-    class="artist-item-box"
+    class="artist-item-box li-item-box"
     :style="style"
   >
     <div class="cover-box">
@@ -15,16 +15,17 @@
         v-lazy="
           $formatImgSize(artist.img1v1Url, 500, 500)
         "
+        class="cover"
       >
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis1">
       <span class="name">{{ artist.name }}</span>
     </div>
   </li>
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
+import {useFlexStyle} from '@/hooks/index';
 const props = defineProps({
   artist: {
     type: Object,
@@ -42,21 +43,13 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 
 let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
 .artist-item-box {
   margin-bottom: 15px;
-  box-sizing: border-box;
-  .box-style(100%);
-  .name-box {
-    .ellipsis;
-    font-size: 13px;
-  }
 }
 </style>

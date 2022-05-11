@@ -14,7 +14,7 @@
             type="text"
             @click="openPanel"
           >
-            {{ currentCategory }}
+            {{ currentCategory }}<i class="iconfont icon-back" />
           </button>
           <!-- 歌单分类面板 -->
           <playlist-category-panel
@@ -99,6 +99,11 @@ const {
     cursor: default;
     &:hover {
       background-color: #f2f2f2;
+    }
+    .iconfont {
+      display: inline-block;
+      transform: rotate(180deg);
+      vertical-align: -1.5px;
     }
   }
   .flex-box {

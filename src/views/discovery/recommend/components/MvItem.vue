@@ -1,25 +1,28 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-03-27 13:47:45
+ * @LastEditTime: 2022-05-11 14:16:14
  * @FilePath: /cloud-music-v3/src/views/discovery/recommend/components/MvItem.vue
  * @Description: 
 -->
 <template>
   <div
-    class="mv-item-box"
+    class="mv-item-box li-item-box"
     :style="style"
   >
     <div class="cover-box">
-      <img v-lazy="mv.picUrl">
+      <img
+        v-lazy="mv.picUrl"
+        class="cover"
+      >
       <span class="play-count">
-        <span class="iconfont icon-pause pause" />{{ $formatCount(mv.playCount) }}
+        <span class="iconfont icon-pause icon" />{{ $formatCount(mv.playCount) }}
       </span>
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis1">
       <span class="name">{{ mv.name }}</span>
     </div>
-    <div class="artist-list">
+    <div class="artists-box ellipsis1">
       <span
         v-for="(artist, idx) in mv.artists"
         :key="artist.id"
@@ -62,30 +65,7 @@ const toArtistDetail = id => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
 .mv-item-box {
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  .box-style(60%);
-  .name-box {
-    .ellipsis;
-  }
-  .artist-list {
-    .ellipsis;
-    font-size: 12px;
-    line-height: 15px;
-    color: #999;
-    span {
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
-    }
-    .sp {
-      color: #999;
-      margin: 0 5px;
-    }
-  }
+  --margin-top: 60%;
 }
 </style>

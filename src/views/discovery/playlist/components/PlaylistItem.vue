@@ -1,6 +1,6 @@
 <template>
   <li
-    class="playlist-item-box"
+    class="playlist-item-box li-item-box"
     :style="style"
   >
     <div
@@ -12,19 +12,18 @@
         v-lazy="
           $formatImgSize(playlist.picUrl ?? playlist.coverImgUrl, 500, 500)
         "
+        class="cover"
       >
       <span class="play-count">
-        <span class="iconfont icon-pause pause" />{{
-          $formatCount(playlist.playCount)
-        }}
+        <span class="iconfont icon-pause icon" />{{$formatCount(playlist.playCount)}}
       </span>
       <!-- TODO: 创建人 -->
-      <div class="creator">
+      <div class="creator ellipsis1">
         <!-- <img src="~@/assets/image/icon-user.png"> -->
         {{ playlist.creator.nickname }}
       </div>
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis2">
       <span
         class="name"
         @click="toPlaylistDetail(playlist.id)"
@@ -61,15 +60,7 @@ let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
 .playlist-item-box {
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  .box-style(100%);
-  .name-box {
-    .ellipsis_rows(2);
-  }
   .cover-box {
     .creator {
       position: absolute;
@@ -79,7 +70,6 @@ let style = useFlexStyle(props);
       height: 15px;
       line-height: 15px;
       width: calc(100% - 50px);
-      .ellipsis;
       color: #fff;
       z-index: 3;
       img {

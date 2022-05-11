@@ -1,29 +1,30 @@
 <template>
   <li
-    class="video-item-box"
+    class="video-item-box li-item-box"
     :style="style"
   >
     <div class="cover-box">
       <img
         v-lazy="$formatCount(video.coverUrl, 1000, 560)"
+        class="cover"
       >
       <span class="play-count">
-        <span class="iconfont icon-pause pause" />{{ $formatCount(video.playTime) }}
+        <span class="iconfont icon-pause icon" />{{ $formatCount(video.playTime) }}
       </span>
     </div>
-    <div class="name-box">
+    <div class="name-tag-box">
       <span
         v-if="video.type === 0"
         class="iconfont icon-mv mv"
       />
       <span
-        class="name"
+        class="name ellipsis1"
         v-html="markKeywords(video.title,keywords)"
       />
     </div>
     <div
       v-if="isMV"
-      class="artists-box"
+      class="artists-box ellipsis1"
     >
       <template
         v-for="(artist, idx) in video.creator"
@@ -86,96 +87,8 @@ const toArtistDetail = id => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .video-item-box {
-  margin-bottom: 40px;
-  .cover-box {
-    width: 100%;
-    position: relative;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid #f2f2f2;
-    &::after {
-      content: "";
-      display: block;
-      width: 100%;
-      margin-top: 56%;
-    }
-    img {
-      position: absolute;
-      border-radius: 5px;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-    .play-count {
-      position: absolute;
-      height: 20px;
-      line-height: 20px;
-      font-size: 12px;
-      top: 0;
-      right: 10px;
-      color: #fff;
-      z-index: 3;
-      .pause{
-        font-size: 12px;
-        position: relative;
-        margin-right: 3px;
-      }
-    }
-  }
-  .name-box {
-    margin: 5px 0;
-    height: 20px;
-    line-height: 20px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    .mv{
-      color: #c3473a;
-      font-size: 27px;
-      margin-right: 5px;
-    }
-    .name {
-      .ellipsis;
-      color: #333;
-      &:hover {
-        color: #000;
-      }
-    }
-  }
-  .artists-box {
-    font-size: 12px;
-    line-height: 15px;
-    height: 15px;
-    color: #999;
-    .ellipsis;
-    span{
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
-    }
-    .sp {
-      color: #999;
-      margin: 0 5px
-    }
-  }
-  .creator-box{
-    .ellipsis;
-    font-size: 12px;
-    line-height: 15px;
-    height: 15px;
-    color: #999;
-    span {
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
-    }
-  }
+  --margin-top: 56%;
+  margin-bottom: 30px;
 }
 </style>

@@ -1,6 +1,8 @@
 @import url("./reset.less");
 @import url("./theme/index.less");
-@import url("//at.alicdn.com/t/font_2888814_ux7dogzzg6c.css");
+@import url("//at.alicdn.com/t/font_2888814_fvvm75lqrp.css");
+@import url("./li-item-box-style.less");
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
   width: 8px;
@@ -30,4 +32,17 @@
 // 关键词高亮
 span.keywords{
   color: #5a7cab!important;
+}
+
+.ellipsis2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.ellipsis1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

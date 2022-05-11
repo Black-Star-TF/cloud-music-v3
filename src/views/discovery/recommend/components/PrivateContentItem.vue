@@ -1,26 +1,29 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-17 14:17:02
- * @LastEditTime: 2022-03-27 00:55:25
+ * @LastEditTime: 2022-05-11 14:15:45
  * @FilePath: /cloud-music-v3/src/views/discovery/recommend/components/PrivateContentItem.vue
  * @Description: 
 -->
 <template>
   <li
-    class="private-content-item-box"
+    class="private-content-item-box li-item-box"
     :style="style"
   >
     <div class="cover-box">
-      <img v-lazy="privateContent.sPicUrl">
+      <img
+        v-lazy="privateContent.sPicUrl"
+        class="cover"
+      >
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis2">
       <span class="name">{{ privateContent.name }}</span>
     </div>
   </li>
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
+import {useFlexStyle} from '@/hooks/index';
 const props = defineProps({
   privateContent: {
     type: Object,
@@ -38,19 +41,12 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
 .private-content-item-box {
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  .box-style(56%); // 比例
-  .name-box{
-    .ellipsis_rows(2);
-  }
+  --margin-top: 56%;
 }
 </style>

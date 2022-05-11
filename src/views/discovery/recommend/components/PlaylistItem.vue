@@ -1,6 +1,6 @@
 <template>
   <li
-    class="playlist-item-box"
+    class="playlist-item-box li-item-box"
     :style="style"
   >
     <div
@@ -12,11 +12,13 @@
         v-lazy="
           $formatImgSize(playlist.picUrl ?? playlist.coverImgUrl, 1000, 1000)
         "
+        class="cover"
       >
       <span class="play-count">
-        <span class="iconfont icon-pause pause" />{{ $formatCount(playlist.playCount) }}</span>
+        <span class="iconfont icon-pause icon" />{{ $formatCount(playlist.playCount) }}
+      </span>
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis2">
       <span
         class="name"
         @click="toPlaylistDetail(playlist.id)"
@@ -26,8 +28,8 @@
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
-import { toPlaylistDetail } from '@/util/methods'
+import {useFlexStyle} from '@/hooks/index';
+import { toPlaylistDetail } from '@/util/methods';
 const props = defineProps({
   playlist: {
     type: Object,
@@ -45,20 +47,8 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 
 let style = useFlexStyle(props);
 </script>
 
-<style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
-.playlist-item-box {
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  .box-style(100%);
-  .name-box {
-    .ellipsis_rows(2);
-  }
-}
-</style>

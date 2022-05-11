@@ -13,7 +13,7 @@
           <span
             class="section-title link"
             @click="toPaid"
-          > 付费精品 </span>
+          > 付费精品<i class="iconfont icon-back" /></span>
         </template>
         <template #content>
           <ul class="flex-box wrap">
@@ -34,9 +34,11 @@
         <template #content>
           <ul class="flex-box">
             <radio-item
-              v-for="radio in rcmdRadios.slice(0, column)"
+              v-for="(radio, index) in rcmdRadios.slice(0, column)"
               :key="radio.id"
               :radio="radio"
+              :index="index + 1"
+              :column="column"
             />
           </ul>
         </template>
@@ -50,9 +52,7 @@
           <span
             class="section-title link"
             @click="toCategory(category.id)"
-          >{{
-            category.name
-          }}</span>
+          >{{ category.name}}<i class="iconfont icon-back" /></span>
         </template>
         <template
           v-if="category.options"
@@ -60,9 +60,11 @@
         >
           <ul class="flex-box">
             <radio-item
-              v-for="radio in category.options.slice(0, column)"
+              v-for="(radio, index) in category.options.slice(0, column)"
               :key="radio.id"
               :radio="radio"
+              :index="index + 1"
+              :column="column"
             />
           </ul>
         </template>
@@ -104,6 +106,12 @@
         &:hover {
           color: #000;
         }
+      }
+      .iconfont {
+        font-size: 20px;
+        display: inline-block;
+        transform: rotate(180deg);
+        vertical-align: -1.5px;
       }
     }
     .flex-box {
