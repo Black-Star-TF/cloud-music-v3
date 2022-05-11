@@ -30,6 +30,7 @@ const routes = [
       {
         path: "/playlist/:id",
         component: () => import("@/views/playlist-detail/index.vue"),
+        props: true,
       },
       {
         path: '/radio/pay',

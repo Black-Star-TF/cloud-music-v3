@@ -34,6 +34,12 @@ import HotCommentBox from "@/views/comment/components/HotCommentBox.vue";
 import NewCommentBox from "@/views/comment/components/NewCommentBox";
 import useComments from "@/hooks/useComments.js";
 import { playlistApi } from "@/api";
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
 const {
   loading,
   hotComments,
@@ -46,7 +52,7 @@ const {
   showHotComments,
   showNewComments,
   handlePageChange,
-} = useComments(playlistApi);
+} = useComments(props.id, playlistApi);
 </script>
 
 <style lang="less" scoped>

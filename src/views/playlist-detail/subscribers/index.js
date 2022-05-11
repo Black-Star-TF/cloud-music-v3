@@ -3,9 +3,8 @@ import { useRoute } from 'vue-router';
 import {  useColumn ,useFetchMore } from '@/hooks';
 import { playlistApi } from '@/api';
 
-export default function useData() {
+export default function useData(id) {
   const route = useRoute();
-  const id = route.query.id;
   const column = useColumn(1360, 3, 2);
 
   const state = reactive({

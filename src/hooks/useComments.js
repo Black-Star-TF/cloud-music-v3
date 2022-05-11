@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-04-12 16:20:58
- * @LastEditTime: 2022-04-12 16:21:59
+ * @LastEditTime: 2022-05-11 15:58:16
  * @FilePath: /cloud-music-v3/src/hooks/useComments.js
  * @Description: 
  */
@@ -9,9 +9,9 @@
 import { ref, nextTick, computed, reactive, toRefs } from "vue";
 import { useRoute } from "vue-router";
 
-export default function useComments(api) {
+export default function useComments(id, api) {
   const route = useRoute();
-  const id = route.query.id;
+  // const id = route.query.id;
 
   const state = reactive({
     loading: false,

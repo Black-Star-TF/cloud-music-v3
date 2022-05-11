@@ -1,7 +1,7 @@
 <!--
  * @Author: BlackStar
  * @Date: 2022-03-19 19:27:42
- * @LastEditTime: 2022-05-05 11:26:29
+ * @LastEditTime: 2022-05-11 16:37:14
  * @FilePath: /cloud-music-v3/src/components/nav/HeaderNav.vue
  * @Description: 
 -->
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from "vue";
+// import { computed, watch } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 const props = defineProps({
   subNavList: {
@@ -35,9 +35,9 @@ const toPath = path => {
   router.push(path);
 };
 
-watch(route, (val) => {
-  console.log(route);
-});
+// watch(route, (val) => {
+//   console.log(route);
+// });
 </script>
 
 <style lang="less" scoped>

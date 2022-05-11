@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-17 17:06:39
- * @LastEditTime: 2022-04-12 17:29:34
+ * @LastEditTime: 2022-05-11 15:49:51
  * @FilePath: /cloud-music-v3/src/util/methods.js
  * @Description:
  */
@@ -37,8 +37,7 @@ export const markKeywords = (str, keywords) => {
 
 export const toPlaylistDetail = id => {
   router.push({
-    path: "/playlist/detail",
-    query: { id },
+    path: `/playlist/${id}`,
   });
 };
 

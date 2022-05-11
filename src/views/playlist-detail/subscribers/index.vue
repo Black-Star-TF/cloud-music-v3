@@ -24,6 +24,12 @@
 <script setup>
 import SubscriberItem from '../components/SubscriberItem.vue';
 import useData from './index';
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
 const {
   loading,
   list,
@@ -32,7 +38,7 @@ const {
   totalCount,
   column,
   handlePageChange,
-} = useData();
+} = useData(props.id);
 </script>
 
 <style lang="less" scoped>

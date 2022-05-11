@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-04-12 16:25:21
- * @LastEditTime: 2022-04-12 16:32:11
+ * @LastEditTime: 2022-05-11 16:36:00
  * @FilePath: /cloud-music-v3/src/views/playlist-detail/index.js
  * @Description: 
  */
@@ -20,14 +20,14 @@ const tabList = [
   },
 ];
 
-import { reactive, toRefs, defineAsyncComponent } from 'vue';
+import { reactive, toRefs, defineAsyncComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { playlistApi } from '@/api';
 const SongTab = defineAsyncComponent(() => import('./songs/index.vue'));
 const CommentTab = defineAsyncComponent(() => import('./comments/index.vue'));
 const SubscriberTab = defineAsyncComponent(() => import('./subscribers/index.vue'));
 
-export default function useData() {
+export default function useData(id) {
   const state = reactive({
     data: null,
     loading: true,
@@ -35,7 +35,7 @@ export default function useData() {
   });
 
   const route = useRoute();
-  const id = route.query.id;
+  // const id = computed(() => route.params.id);
 
   const getDetail = async () => {
     const { playlist } = await playlistApi.detail({ id: id });
@@ -58,6 +58,7 @@ export default function useData() {
 
   return {
     ...toRefs(state),
+    id,
     tabList,
     getTab,
   };

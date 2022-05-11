@@ -53,9 +53,8 @@ import { reactive, toRefs } from 'vue';
 import { useRoute } from 'vue-router';
 import { playlistApi } from '@/api';
 
-export default function useData() {
+export default function useData(id) {
   const route = useRoute();
-  const id = route.query.id;
 
   const state = reactive({
     tableData: [],

@@ -12,7 +12,13 @@
 <script setup>
 import SongListTable from '../components/SongListTable.vue';
 import useData from './index';
-const { loading, tableData, tableColumns } = useData();
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
+const { loading, tableData, tableColumns } = useData(props.id);
 </script>
 
 <style lang="less" scoped>

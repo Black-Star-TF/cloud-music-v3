@@ -11,7 +11,10 @@
         />
         <!-- <div class="search-box"></div> -->
       </div>
-      <component :is="getTab()" />
+      <component
+        :is="getTab()"
+        :id="id"
+      />
     </template>
     <common-loading v-else />
   </div>
@@ -21,13 +24,20 @@
 import HeaderDetail from './components/HeaderDetail.vue';
 import TabSelector from '@/components/common/TabSelector';
 import useData from "./index";
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
 const {
   loading,
   data,
   currentTab,
   tabList,
+  id,
   getTab,
-} = useData();
+} = useData(props.id);
 </script>
 
 <style lang="less" scoped>
