@@ -6,13 +6,13 @@
         class="cover"
       >
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis1">
       <span
         class="name"
         v-html="markKeywords(radio.name, keywords)"
       />
     </div>
-    <div class="creator-box">
+    <div class="creator-box ellipsis1">
       by
       <span
         class="creator"
@@ -37,7 +37,6 @@ const props = defineProps({
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .radio-item-box {
   width: 100%;
   height: 80px;
@@ -68,7 +67,6 @@ const props = defineProps({
     flex: 5;
     font-size: 14px;
     line-height: 15px;
-    .ellipsis;
     .name {
       color: #333;
       &:hover {
@@ -78,7 +76,6 @@ const props = defineProps({
   }
   .creator-box {
     flex: 4;
-    .ellipsis;
     font-size: 12px;
     color: #bbb;
     .creator {

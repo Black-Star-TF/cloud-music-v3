@@ -43,8 +43,8 @@
 </template>
 
 <script setup>
-import HighQualityPlaylistItem from "../components/HighQualityPlaylistItem.vue";
-import HighQualityPlaylistCategoryPanel from "../components/HighQualityPlaylistCategoryPanel.vue";
+import HighQualityPlaylistItem from "./components/HighQualityPlaylistItem.vue";
+import HighQualityPlaylistCategoryPanel from "./components/HighQualityPlaylistCategoryPanel.vue";
 import useData from "./index";
 const {
   loading,

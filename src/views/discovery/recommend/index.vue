@@ -15,7 +15,7 @@
           <span
             class="section-title"
             @click="toPlaylist"
-          >推荐歌单<i class="iconfont icon-back" /></span>
+          >推荐歌单<i class="iconfont icon-back icon" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -35,7 +35,7 @@
           <span
             class="section-title"
             @click=" toPrivateContent"
-          >独家放送<i class="iconfont icon-back" /></span>
+          >独家放送<i class="iconfont icon-back icon" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -54,7 +54,7 @@
           <span
             class="section-title"
             @click="toNewestMusic"
-          >最新音乐<i class="iconfont icon-back" /></span>
+          >最新音乐<i class="iconfont icon-back icon" /></span>
         </template>
         <template #content>
           <ul class="flex-box margin-bottom">
@@ -72,7 +72,7 @@
           <span
             class="section-title"
             @click="toMV"
-          >推荐MV<i class="iconfont icon-back" /></span>
+          >推荐MV<i class="iconfont icon-back icon" /></span>
         </template>
         <template #content>
           <ul class="flex-box">
@@ -127,7 +127,7 @@ const {
     &:hover {
       color: #000;
     }
-    .iconfont {
+    .icon {
       font-size: 20px;
       display: inline-block;
       transform: rotate(180deg);

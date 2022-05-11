@@ -8,7 +8,7 @@
       :src="subscriber.avatarUrl"
     />
     <div class="info-box">
-      <div class="nickname-box">
+      <div class="nickname-box ellipsis1">
         <span class="nickname">{{subscriber.nickname}}</span>
         <span
           class="icon-gender"
@@ -26,7 +26,7 @@
       </div>
       <div
         v-if="subscriber.signature"
-        class="signature"
+        class="signature ellipsis1"
       >{{ subscriber.signature }}</div>
     </div>
   </div>
@@ -65,7 +65,6 @@ let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .subscriber-item-box{
   width: 340px;
   height: 120px;
@@ -89,7 +88,6 @@ let style = useFlexStyle(props);
       font-size: 14px;
       height: 20px;
       line-height: 20px;
-      .ellipsis;
       .nickname {
         // vertical-align: bottom;
         color: #333;
@@ -126,7 +124,6 @@ let style = useFlexStyle(props);
       margin-top: 10px;
       color: #bbb;
       line-height: 20px;
-      .ellipsis;
     }
   }
 }

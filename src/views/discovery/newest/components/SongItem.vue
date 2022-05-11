@@ -5,7 +5,7 @@
       <img v-lazy="$formatImgSize(song.album.blurPicUrl, 200, 200)">
     </div>
     <span class="info-box">
-      <span class="name-box">
+      <span class="name-box ellipsis1">
         <span class="name">{{ song.name }}</span>
         <span
           v-if="song.alias.length > 0"
@@ -17,7 +17,7 @@
       />
     </span>
     
-    <span class="artists">
+    <span class="artists ellipsis1">
       <span
         v-for="(artist, idx) in song.artists"
         :key="artist.id"
@@ -29,7 +29,7 @@
         > | </i>
       </span>
     </span>
-    <span class="album-box">
+    <span class="album-box ellipsis1">
       <span>
         {{ song.album.name }}
       </span>
@@ -54,7 +54,6 @@ const toArtistDetail = id => console.log(id);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .song-item-box {
   display: flex;
   padding: 0 30px;
@@ -91,7 +90,6 @@ const toArtistDetail = id => console.log(id);
     .name-box{
       font-size: 14px;
       color: #333;
-      .ellipsis;
       .alia{
         color: #999;
       }
@@ -112,7 +110,6 @@ const toArtistDetail = id => console.log(id);
   }
   .artists {
     flex: 4;
-    .ellipsis;
     color: #666;
     margin-left: 5px;
     font-size: 12.5px;
@@ -128,7 +125,6 @@ const toArtistDetail = id => console.log(id);
   }
   .album-box {
     flex: 3;
-    .ellipsis;
     margin-left: 5px;
     font-size: 12.5px;
     color: #666;

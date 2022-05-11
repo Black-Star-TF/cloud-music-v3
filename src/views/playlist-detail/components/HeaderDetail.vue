@@ -54,7 +54,6 @@ const options = computed(() => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .create-info{
   height: 30px;
   line-height: 30px;

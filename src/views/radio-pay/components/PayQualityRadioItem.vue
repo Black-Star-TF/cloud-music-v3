@@ -11,13 +11,13 @@
       </div>
     </div>
     <div class="info-box">
-      <div class="name">
+      <div class="name ellipsis1">
         {{ radio.name }}
       </div>
-      <div class="desc">
+      <div class="desc ellipsis1">
         {{ radio.rcmdText }}
       </div>
-      <div class="last-program">
+      <div class="last-program ellipsis1">
         <span class="iconfont icon-pause pause" />{{ radio.lastProgramName }}
       </div>
       <div class="price">
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
+import {useFlexStyle} from '@/hooks/index';
 const props = defineProps({
   radio: {
     type: Object,
@@ -46,13 +46,12 @@ const props = defineProps({
     type: Number,
     default: 40,
   },
-})
+});
 let style = useFlexStyle(props);
-const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
+const getPrice = () => (props.radio.originalPrice/100).toFixed(1);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .pay-quality-radio-item-box{
   height: 156px;
   display: flex;
@@ -94,7 +93,6 @@ const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
       color: #333;
       margin: 15px 0;
       cursor: pointer;
-      .ellipsis;
       &:hover{
         color: #000;
       }
@@ -103,13 +101,11 @@ const getPrice = () => (props.radio.originalPrice/100).toFixed(1)
       font-size: 12px;
       color: #bbb;
       margin: 5px 0;
-      .ellipsis;
     }
     .last-program{
       font-size: 12px;
       color: #bbb;
       margin: 5px 0;
-      .ellipsis;
       .pause{
         font-size: 12px;
         position: relative;

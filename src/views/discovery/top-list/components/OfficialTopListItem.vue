@@ -36,7 +36,7 @@
               （{{ song.alia[0] }}）
             </span>
           </span>
-          <span class="artist-list">
+          <span class="artist-list ellipsis1">
             <span
               v-for="(artist, idx) in song.ar"
               :key="artist.id"
@@ -86,7 +86,6 @@ const toArtistDetail = id => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .official-top-list-item-box {
   display: flex;
   height: 200px;
@@ -154,7 +153,6 @@ const toArtistDetail = id => {
           margin-right: 10px;
           line-height: 35px;
           color: #999;
-          .ellipsis;
           span {
             cursor: pointer;
             &:hover {

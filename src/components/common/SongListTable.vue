@@ -36,7 +36,7 @@
             class="song-name"
           >
             <span
-              class="name"
+              class="name ellipsis1"
               v-html="markKeywords(song.name, keywords)"
             />
             <span
@@ -57,7 +57,7 @@
           </div>
           <div
             v-if="!showLyric&&song.alia.length > 0"
-            class="alia"
+            class="alia ellipsis1"
             v-html="markKeywords(song.alia[0], keywords)"
           />
           <div
@@ -83,7 +83,7 @@
           </div>
         </td>
         <td class="artist-column">
-          <div class="song-artists">
+          <div class="song-artists ellipsis1">
             <template
               v-for="(artist, idx) in song.ar"
               :key="artist.id"
@@ -100,7 +100,7 @@
           </div>
         </td>
         <td class="album-column">
-          <div class="song-album">
+          <div class="song-album ellipsis1">
             <span v-html="markKeywords(song.al.name, keywords)" />
           </div>
           <div
@@ -158,8 +158,8 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
-import { markKeywords } from '@/util/methods'
+import { reactive, ref } from 'vue';
+import { markKeywords } from '@/util/methods';
 const props = defineProps({
   songList: {
     type: Array,
@@ -175,46 +175,45 @@ const props = defineProps({
   }
 });
 
-let activeIndex = ref(-1)
+let activeIndex = ref(-1);
 
 const focusOn = index => {
-  activeIndex.value = index
-}
+  activeIndex.value = index;
+};
 
 const getLyrics = (lyrics, index) => {
   if(expandedList.includes(index)){
-    return lyrics
+    return lyrics;
   }else {
-    return lyrics.slice(0,4)
+    return lyrics.slice(0,4);
   }
-}
+};
 
-let expandedList = reactive([])
+let expandedList = reactive([]);
 const expandLyric = index => {
-  expandedList.push(index)
-}
+  expandedList.push(index);
+};
 const collapseLyric = index => {
-  expandedList.splice(expandedList.indexOf(index), 1)
-}
+  expandedList.splice(expandedList.indexOf(index), 1);
+};
 
 const copy = async lyrics => {
-  let list = [...lyrics]
+  let list = [...lyrics];
   if(list.length > 0){
-    list[0] = list[0].replace('<b>', '').replace('</b>', '')
+    list[0] = list[0].replace('<b>', '').replace('</b>', '');
     await navigator.clipboard.writeText(list.join(' '));
     console.log('复制成功！！');
     // TODO: 弹出提示窗
   }
-}
+};
 
 
 const toArtistDetail = () => {
 
-}
+};
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .song-list-table {
   width: 100%;
   font-size: 12.5px;
@@ -266,7 +265,6 @@ const toArtistDetail = () => {
       align-items: center;
       .name{
         color: #333;
-        .ellipsis;
       }
       .vip{
         color: #c3473a;
@@ -296,7 +294,6 @@ const toArtistDetail = () => {
       }
     }
     .alia{
-      .ellipsis;
       color: #999;
       font-size: 12px;
       height: 25px;
@@ -329,7 +326,6 @@ const toArtistDetail = () => {
     padding-right: 10px;
     .song-artists {
       width: 100%;
-      .ellipsis;
       color: #666;
       span {
         cursor: pointer;
@@ -346,7 +342,6 @@ const toArtistDetail = () => {
     position: relative;
     .song-album {
       width: 100%;
-      .ellipsis;
       span {
         cursor: pointer;
         color: #666;

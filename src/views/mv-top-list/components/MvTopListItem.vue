@@ -13,10 +13,10 @@
       <!-- <span class="mv-pop">{{ $formatCount(mv.playCount) }}</span> -->
     </div>
     <div class="info-box">
-      <div class="name-box">
+      <div class="name-box ellipsis1">
         <span class="name">{{ mv.name }}</span>
       </div>
-      <div class="artists-box">
+      <div class="artists-box ellipsis1">
         <template
           v-for="(artist, idx) in mv.artists"
           :key="artist.id"
@@ -51,7 +51,6 @@ let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .mv-top-list-item-box {
   height: 120px;
   padding: 10px 0;
@@ -117,7 +116,6 @@ let style = useFlexStyle(props);
       height: 30px;
       line-height: 30px;
       font-size: 14px;
-      .ellipsis;
       .name {
         color: #333;
         cursor: pointer;
@@ -127,7 +125,6 @@ let style = useFlexStyle(props);
       }
     }
     .artists-box {
-      .ellipsis;
       font-size: 12px;
       line-height: 20px;
       height: 20px;

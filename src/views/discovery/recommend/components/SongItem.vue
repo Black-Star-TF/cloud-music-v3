@@ -1,5 +1,8 @@
 <template>
-  <li class="song-item-box" :style="style">
+  <li
+    class="song-item-box"
+    :style="style"
+  >
     <div class="mask" />
     <img
       v-lazy="$formatImgSize(song.album.picUrl, 120, 120)"
@@ -9,11 +12,14 @@
       {{ index > 9 ? index : `0${index}` }}
     </div>
     <div class="info-box">
-      <div class="name-box">
+      <div class="name-box ellipsis1">
         <span class="name">
           {{ song.name }}
         </span>
-        <span v-if="song?.alias.length > 0" class="alia">
+        <span
+          v-if="song?.alias.length > 0"
+          class="alia"
+        >
           （{{ song.alias[0] }}）
         </span>
       </div>
@@ -22,17 +28,26 @@
           v-if="song.privilege.maxbr === 999000"
           class="iconfont icon-sq sq"
         />
-        <span class="artist-list">
-          <template v-for="(artist, idx) in song.artists" :key="artist.id">
+        <span class="artist-list ellipsis1">
+          <template
+            v-for="(artist, idx) in song.artists"
+            :key="artist.id"
+          >
             <span @click="toArtistDetail(artist.id)">{{ artist.name }}</span>
-            <i v-if="idx < song.artists.length - 1" class="sp">|</i>
+            <i
+              v-if="idx < song.artists.length - 1"
+              class="sp"
+            >|</i>
           </template>
         </span>
       </div>
     </div>
     <div class="mv-box">
       <!-- mv图标 -->
-      <span v-if="song.mvid" class="iconfont icon-video mv" />
+      <span
+        v-if="song.mvid"
+        class="iconfont icon-video mv"
+      />
     </div>
   </li>
 </template>
@@ -64,7 +79,6 @@ const toArtistDetail = id => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .song-item-box {
   height: 80px;
   border-top: 0.5px solid #f7f7f7;
@@ -116,7 +130,6 @@ const toArtistDetail = id => {
       margin-bottom: 5px;
       width: 100%;
       height: 15px;
-      .ellipsis;
       line-height: 15px;
       font-size: 13.5px;
       color: #333;
@@ -131,7 +144,6 @@ const toArtistDetail = id => {
       align-items: center;
       min-width: 0;
       .artist-list {
-        .ellipsis;
         font-size: 12px;
         line-height: 15px;
         color: #666;

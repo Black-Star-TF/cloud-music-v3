@@ -18,7 +18,7 @@
       <div class="info">
         <div class="desc">
           <span
-            class="search-word"
+            class="search-word ellipsis1"
             :class="{ hot: index < 3 }"
           >{{
             item.searchWord
@@ -32,7 +32,7 @@
         </div>
         <div
           v-if="item.content"
-          class="content"
+          class="content ellipsis1"
         >
           {{ item.content }}
         </div>
@@ -60,7 +60,6 @@ const handleClick = keywords => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .search-hot-content {
   width: 100%;
   .title {
@@ -107,7 +106,6 @@ const handleClick = keywords => {
         width: 100%;
         .search-word {
           color: #333;
-          .ellipsis;
           margin-right: 10px;
           font-size: 13px;
           &.hot {
@@ -124,7 +122,6 @@ const handleClick = keywords => {
         }
       }
       .content {
-        .ellipsis;
         height: 20px;
         line-height: 20px;
         font-size: 12px;

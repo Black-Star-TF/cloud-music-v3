@@ -10,7 +10,7 @@
       >
       <div class="mask-box" />
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis1">
       <span class="name">
         <span v-html="markKeywords(album.name,keywords)" />
         <span
@@ -20,7 +20,7 @@
         />
       </span>
     </div>
-    <div class="artist-box">
+    <div class="artist-box ellipsis1">
       <span
         class="artist"
         @click.stop
@@ -51,7 +51,6 @@ const props = defineProps({
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .album-item-box{
   width: 100%;
   height: 80px;
@@ -92,7 +91,6 @@ const props = defineProps({
     flex: 1;
     font-size: 14px;
     line-height: 15px;
-    .ellipsis;
     .name{
       color: #333;
       &:hover {
@@ -105,7 +103,6 @@ const props = defineProps({
   }
   .artist-box {
     flex: 1;
-    .ellipsis;
     font-size: 12px;
     .artist{
       color: #666;

@@ -15,18 +15,21 @@
     </div>
     <div class="info-box">
       <div class="name">
-        <span @click="toPlaylistDetail(playlist.id)">
+        <span
+          class="ellipsis1"
+          @click="toPlaylistDetail(playlist.id)"
+        >
           {{ playlist.name }}
         </span>
       </div>
-      <div class="creator">
+      <div class="creator ellipsis1">
         by {{ playlist.creator.nickname }} 
         <img
           class="icon"
           :src="playlist?.creator?.avatarDetail?.identityIconUrl"
         >
       </div>
-      <div class="more">
+      <div class="more ellipsis1">
         <span class="tag">{{ playlist.tag }}</span>
         <span class="copywriter">{{ playlist.copywriter }}</span>
       </div>
@@ -35,7 +38,7 @@
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
+import {useFlexStyle} from '@/hooks/index';
 import { toPlaylistDetail } from "@/util/methods";
 const props = defineProps({
   playlist: {
@@ -54,13 +57,12 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 
 let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .high-quality-playlist-item-box{
   height: 130px;
   display: flex;
@@ -115,7 +117,6 @@ let style = useFlexStyle(props);
       width: 100%;
       margin-top: 20px;
       span{
-        .ellipsis;
         cursor: pointer;
         font-size: 14px;
         color: #333;
@@ -126,7 +127,6 @@ let style = useFlexStyle(props);
     }
     .creator{
       width: 100%;
-      .ellipsis;
       margin-top: 15px;
       display: inline-block;
       font-size: 12px;
@@ -143,7 +143,6 @@ let style = useFlexStyle(props);
     }
     .more{
       width: 100%;
-      .ellipsis;
       margin-top: 15px;
       font-size: 12px;
       color: #bbb;

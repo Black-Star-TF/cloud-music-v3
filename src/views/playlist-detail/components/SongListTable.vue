@@ -33,7 +33,7 @@
           </template>
           <template v-if="column.id == 'name'">
             <div class="song-name">
-              <span class="name">
+              <span class="name ellipsis1">
                 {{ song.name }}
                 <span
                   v-if="song.alias.length > 0"
@@ -57,7 +57,7 @@
             </div>
           </template>
           <template v-if="column.id == 'artist'">
-            <div class="song-artists">
+            <div class="song-artists ellipsis1">
               <template
                 v-for="(artist, idx) in song.artists"
                 :key="artist.id"
@@ -71,7 +71,7 @@
             </div>
           </template>
           <template v-if="column.id == 'album'">
-            <div class="song-album">
+            <div class="song-album ellipsis1">
               <span>{{ song.album.name }}</span>
             </div>
           </template>
@@ -133,7 +133,6 @@ const toArtistDetail = () => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .song-table {
   width: 100%;
   font-size: 12.5px;
@@ -185,7 +184,6 @@ const toArtistDetail = () => {
       align-items: center;
       .name {
         color: #333;
-        .ellipsis;
         .alia {
           color: #999;
           font-size: 12px;
@@ -227,7 +225,6 @@ const toArtistDetail = () => {
     padding-right: 10px;
     .song-artists {
       width: 100%;
-      .ellipsis;
       color: #666;
       span {
         cursor: pointer;
@@ -247,7 +244,6 @@ const toArtistDetail = () => {
     position: relative;
     .song-album {
       width: 100%;
-      .ellipsis;
       span {
         cursor: pointer;
         color: #666;

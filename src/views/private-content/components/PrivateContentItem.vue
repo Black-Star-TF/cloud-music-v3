@@ -1,19 +1,22 @@
 <template>
   <li
-    class="private-content-item-box"
+    class="private-content-item-box li-item-box"
     :style="style"
   >
     <div class="cover-box">
-      <img v-lazy="$formatImgSize(privateContent.sPicUrl, 800, 200)">
+      <img
+        v-lazy="$formatImgSize(privateContent.sPicUrl, 800, 200)"
+        class="cover"
+      >
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis2">
       <span class="name">{{ privateContent.name }}</span>
     </div>
   </li>
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index'
+import {useFlexStyle} from '@/hooks/index';
 const props = defineProps({
   privateContent: {
     type: Object,
@@ -31,19 +34,12 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
-})
+});
 let style = useFlexStyle(props);
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
-@import url("~@/style/item-mixins.less");
 .private-content-item-box {
-  margin-bottom: 40px;
-  box-sizing: border-box;
-  .box-style(40%); // 比例
-  .name-box{
-    .ellipsis_rows(2);
-  }
+  --margin-top: 40%;
 }
 </style>

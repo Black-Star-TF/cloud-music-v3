@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-19 19:21:28
- * @LastEditTime: 2022-05-05 11:24:38
+ * @LastEditTime: 2022-05-11 15:06:44
  * @FilePath: /cloud-music-v3/src/router/discoveryRoute/index.js
  * @Description:
  */
@@ -27,7 +27,7 @@ const discoveryRoutes = {
     {
       name: 'highQuality',
       path: "/playlist/high-quality",
-      component: () => import("@/views/discovery/playlist/high-quality/index.vue"),
+      component: () => import("@/views/discovery/high-quality-playlist/index.vue"),
       props: true,
     },
     {

@@ -11,7 +11,7 @@
         class="identity-icon"
       >
     </div>
-    <div class="name-box">
+    <div class="name-box ellipsis1">
       <span
         class="name"
         v-html="markKeywords(user.nickname, keywords)"
@@ -30,7 +30,7 @@
         >
       </span>
     </div>
-    <div class="desc-box">
+    <div class="desc-box ellipsis1">
       {{ user.signature || user.description }}
     </div>
   </li>
@@ -59,7 +59,6 @@ const getGenderClass = () => {
 </script>
 
 <style lang="less" scoped>
-@import url("~@/style/common-mixins.less");
 .user-item-box {
   width: 100%;
   height: 80px;
@@ -100,7 +99,6 @@ const getGenderClass = () => {
     font-size: 14px;
     height: 16px;
     line-height: 16px;
-    .ellipsis;
     .name {
       color: #333;
       &:hover {
@@ -132,7 +130,6 @@ const getGenderClass = () => {
   .desc-box {
     flex: 1;
     text-align: right;
-    .ellipsis;
     font-size: 12px;
     color: #bbb;
   }
