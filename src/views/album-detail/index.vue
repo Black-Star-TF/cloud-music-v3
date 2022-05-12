@@ -11,6 +11,7 @@
       </div>
       <component
         :is="getTab()"
+        :id="id"
         :album="data"
       />
     </template>
@@ -21,13 +22,19 @@
 import HeaderDetail from './components/HeaderDetail.vue';
 import TabSelector from '@/components/common/TabSelector';
 import useData from './index';
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
 const {
   loading,
   data,
   tabList,
   currentTab,
   getTab,
-} = useData();
+} = useData(props.id);
 </script>
 
 <style lang="less" scoped>

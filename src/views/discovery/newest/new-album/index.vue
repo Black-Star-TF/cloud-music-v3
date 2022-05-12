@@ -83,7 +83,6 @@ const {
   handleAreaChange,
   handleTypeChange,
   getDate,
-  getMore
 } = useData();
 </script>
 

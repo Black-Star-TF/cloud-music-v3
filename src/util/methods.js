@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-17 17:06:39
- * @LastEditTime: 2022-05-11 15:49:51
+ * @LastEditTime: 2022-05-11 18:09:47
  * @FilePath: /cloud-music-v3/src/util/methods.js
  * @Description:
  */
@@ -43,14 +43,12 @@ export const toPlaylistDetail = id => {
 
 export const toAlbumDetail = id => {
   router.push({
-    path: "/album/detail",
-    query: { id },
+    path: `/album/${id}`,
   });
 };
 
 export const toRadioDetail = rid => {
   router.push({
-    path: "/radio/detail",
-    query: { rid },
+    path: `/radio/${rid}`,
   });
 };

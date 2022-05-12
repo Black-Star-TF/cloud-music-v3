@@ -1,5 +1,8 @@
 <template>
-  <div class="radio-detail-wrapper">
+  <div
+    id="radio-detail-wrapper"
+    class="radio-detail-wrapper"
+  >
     <common-loading v-if="loading" />
     <template v-else>
       <header-detail :radio="data" />
@@ -9,7 +12,11 @@
           :tabs="tabList"
         />
       </div>
-      <component :is="getTab()" />
+      <component
+        :is="getTab()"
+        :id="id"
+        :radio="data"
+      />
     </template>
   </div>
 </template>
@@ -18,14 +25,19 @@
 import HeaderDetail from './components/HeaderDetail.vue';
 import TabSelector from '@/components/common/TabSelector';
 import useData from './index';
-
+const props = defineProps({
+  id: {
+    type: [Number, String],
+    required: true,
+  }
+});
 const {
   loading,
   data,
   currentTab,
   tabList,
   getTab,
-} = useData();
+} = useData(props.id);
 </script>
 
 <style lang="less" scoped>

@@ -7,6 +7,12 @@
       class="cover-box"
       @click="toRadioDetail(radio.id)"
     >
+      <div
+        v-if="radio.radioFeeType !== 0"
+        class="tag"
+      >
+        付费精品
+      </div>
       <div class="mask" />
       <img
         v-lazy="
@@ -52,6 +58,20 @@ let style = useFlexStyle(props);
 <style lang="less" scoped>
 .radio-item-box {
   .cover-box{
+    .tag{
+      width: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 12px;
+      border-bottom-right-radius: 5px;
+      background-color: #c3473a;
+      color: #ffffff;
+      z-index: 5;
+    }
     .dj{
       position: absolute;
       width: 100%;

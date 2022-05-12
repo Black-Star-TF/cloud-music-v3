@@ -1,6 +1,9 @@
 <template>
   <header-detail :options="options">
-    <operation-box />
+    <operation-box
+      layout="play,like,share,download"
+      :option="operationOption"
+    />
     <div class="artist">
       <span class="label">歌手</span><span>：</span><span class="name">{{ album.artist.name }}</span>
     </div>
@@ -27,6 +30,12 @@ const options = computed(() => {
     name: props.album.name,
     type: 'album',
     typeName: '专辑',
+  };
+});
+const operationOption = computed(() => {
+  return {
+    shareCount: props.album.shareCount || 0,
+    subscribedCount: props.album.subscribedCount || 0,
   };
 });
 </script>

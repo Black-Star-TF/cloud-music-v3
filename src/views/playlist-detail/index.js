@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-04-12 16:25:21
- * @LastEditTime: 2022-05-11 16:36:00
+ * @LastEditTime: 2022-05-12 09:21:35
  * @FilePath: /cloud-music-v3/src/views/playlist-detail/index.js
  * @Description: 
  */
@@ -20,8 +20,7 @@ const tabList = [
   },
 ];
 
-import { reactive, toRefs, defineAsyncComponent, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { reactive, toRefs, defineAsyncComponent } from 'vue';
 import { playlistApi } from '@/api';
 const SongTab = defineAsyncComponent(() => import('./songs/index.vue'));
 const CommentTab = defineAsyncComponent(() => import('./comments/index.vue'));
@@ -34,11 +33,11 @@ export default function useData(id) {
     currentTab: tabList[0]
   });
 
-  const route = useRoute();
-  // const id = computed(() => route.params.id);
-
   const getDetail = async () => {
-    const { playlist } = await playlistApi.detail({ id: id });
+    // const result = await Promise.all([playlistApi.detail({ id }), playlistApi.dynamicDetail({ id })]);
+    // const { playlist } = result[0];
+    // const { playlist } = result[1];
+    const { playlist } = await playlistApi.detail({ id });
     state.data = playlist;
     state.loading = false;
   };

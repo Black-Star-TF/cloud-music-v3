@@ -72,7 +72,7 @@
           </template>
           <template v-if="column.id == 'album'">
             <div class="song-album ellipsis1">
-              <span>{{ song.album.name }}</span>
+              <span @click="toAlbumDetail(song.album.id)">{{ song.album.name }}</span>
             </div>
           </template>
           <template v-if="column.id == 'duration'">
@@ -85,8 +85,8 @@
 </template>
 
 <script setup>
-import { reactive } from '@babel/types';
 import { ref, computed } from 'vue';
+import { toAlbumDetail } from '@/util/methods';
 const props = defineProps({
   tableColumns: {
     type: Array,

@@ -2,13 +2,16 @@
   <header-detail :options="options">
     <div class="create-info">
       <img
-        :src="$formatImgSize(playlist.creator.avatarUrl, 50,50)"
+        :src="$formatImgSize(playlist.creator.avatarUrl, 50, 50)"
         class="creator-avatar"
       >
       <span class="creator-name">{{ playlist.creator.nickname }}</span>
       <span class="create-data">{{ dayjs(playlist.createTime).format('YYYY-MM-DD') }}创建</span>
     </div>
-    <operation-box />
+    <operation-box
+      layout="play,like,share,download"
+      :option="operationOption"
+    />
     <div
       v-if="playlist.tags.length > 0"
       class="tag-wrapper"
@@ -49,6 +52,12 @@ const options = computed(() => {
     name: props.playlist.name,
     type: 'playlist',
     typeName: '歌单',
+  };
+});
+const operationOption = computed(() => {
+  return {
+    shareCount: props.playlist.shareCount || 0,
+    subscribedCount: props.playlist.subscribedCount || 0,
   };
 });
 </script>

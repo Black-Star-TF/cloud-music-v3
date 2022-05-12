@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-03-16 19:18:05
- * @LastEditTime: 2022-04-11 17:42:51
+ * @LastEditTime: 2022-05-11 18:37:57
  * @FilePath: /cloud-music-v3/src/api/playlist.js
  * @Description: 歌单相关接口
  */
@@ -60,6 +60,12 @@ export const songList = params => request.get('/playlist/track/all', { params })
 export const detail = params => request.get('/playlist/detail', { params });
 
 /**
+ * @description: 歌单动态详情
+ * @param { id } 歌单id
+ */
+export const dynamicDetail = params => request.get('/playlist/detail/dynamic', { params });
+
+/**
  * @description: 歌单评论
  * @param { id } 歌单id
  * @param { limit } 数量
@@ -85,6 +91,7 @@ export default {
   hqList,
   songList,
   detail,
+  dynamicDetail,
   comments,
   subscribers
 };

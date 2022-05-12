@@ -67,12 +67,14 @@ const routes = [
         component: () => import("@/views/search/index.vue"),
       },
       {
-        path: "/album/detail",
+        path: "/album/:id",
         component: () => import("@/views/album-detail/index.vue"),
+        props: true,
       },
       {
-        path: "/radio/detail",
+        path: "/radio/:id",
         component: () => import("@/views/radio-detail/index.vue"),
+        props: true,
       },
     ],
   },

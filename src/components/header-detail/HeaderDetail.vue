@@ -32,7 +32,10 @@ const typeName = computed(() => {
       type = '专辑';
       break;
     case 'radio':
-      type=  '电台';
+      type = '电台';
+      break;
+    case 'fee-radio':
+      type = '付费精品';
       break;
   }
   return type;
@@ -61,7 +64,7 @@ const typeName = computed(() => {
       color: #333;
       .type-tag{
         display: inline-block;
-        width: 36px;
+        padding: 0 5px;
         height: 18px;
         line-height: 18px;
         text-align: center;

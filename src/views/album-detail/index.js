@@ -39,7 +39,7 @@ const SongTab = defineAsyncComponent(() => import('./songs/index.vue'));
 const CommentTab = defineAsyncComponent(() => import('./comments/index.vue'));
 const DescriptionTab = defineAsyncComponent(() => import('./description/index.vue'));
 
-export default function useData() {
+export default function useData(id) {
   const state = reactive({
     data: null,
     loading: true,
@@ -47,12 +47,15 @@ export default function useData() {
   });
 
   const route = useRoute();
-  const id = route.query.id;
-
 
   const getDetail = async () => {
-    const { songs, album } = await albumApi.detail({ id });
+    const result = await Promise.all([albumApi.detail({ id }), albumApi.dynamicDetail({ id })]);
+    const { songs, album } = result[0];
+    const { shareCount, subCount, commentCount} = result[1];
     album.songs = songs.map(formatSong);
+    album.shareCount = shareCount;
+    album.subscribedCount = subCount;
+    album.commentCount = commentCount;
     state.data = album;
     state.loading = false;
   };
@@ -63,7 +66,7 @@ export default function useData() {
         return SongTab;
       case 'comment':
         return CommentTab;
-      case 'description': 
+      case 'description':
         return DescriptionTab;
     }
   };

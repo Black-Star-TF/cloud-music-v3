@@ -3,7 +3,10 @@
     class="album-item-box li-item-box"
     :style="style"
   >
-    <div class="cover-box">
+    <div
+      class="cover-box"
+      @click="toAlbumDetail(album.id)"
+    >
       <img
         v-lazy="$formatImgSize(album.picUrl, 500, 500)"
         class="cover"
@@ -11,7 +14,10 @@
       <div class="mask" />
     </div>
     <div class="name-box ellipsis2">
-      <span class="name">
+      <span
+        class="name"
+        @click="toAlbumDetail(album.id)"
+      >
         {{ album.name }}
         <span
           v-if="album.alias.length > 0"
@@ -27,6 +33,7 @@
 
 <script setup>
 import { useFlexStyle } from "@/hooks/index";
+import { toAlbumDetail } from '@/util/methods';
 const props = defineProps({
   album: {
     type: Object,

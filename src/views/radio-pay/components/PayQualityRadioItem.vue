@@ -3,6 +3,7 @@
   <li
     class="pay-quality-radio-item-box"
     :style="style"
+    @click="toRadioDetail(radio.id)"
   >
     <div class="cover-box">
       <img v-lazy="$formatImgSize(radio.picUrl,1000,1000)">
@@ -28,7 +29,8 @@
 </template>
 
 <script setup>
-import {useFlexStyle} from '@/hooks/index';
+import { useFlexStyle } from '@/hooks/index';
+import { toRadioDetail } from '@/util/methods';
 const props = defineProps({
   radio: {
     type: Object,

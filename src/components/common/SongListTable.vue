@@ -101,7 +101,10 @@
         </td>
         <td class="album-column">
           <div class="song-album ellipsis1">
-            <span v-html="markKeywords(song.al.name, keywords)" />
+            <span
+              @click="toAlbumDetail(song.al.id)"
+              v-html="markKeywords(song.al.name, keywords)"
+            />
           </div>
           <div
             v-if="showLyric"
@@ -159,7 +162,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
-import { markKeywords } from '@/util/methods';
+import { markKeywords, toAlbumDetail } from '@/util/methods';
 const props = defineProps({
   songList: {
     type: Array,
