@@ -28,20 +28,48 @@
       v-if="isFree"
       class="desc"
     >
-      <span class="tag">{{ radio.category }}</span>
-      <span>{{ radio.desc }}</span>
+      <div class="content">
+        <div class="line ellipsis1">
+          <span class="tag">{{ radio.category }}</span>
+          <span class="line">{{ desc[0] }}</span>
+        </div>
+        <div
+          v-if="desc.length > 1"
+          class="more"
+          :class="{'ellipsis1' : !showMore}"
+        >
+          {{ moreDesc }}
+        </div>
+      </div>
+      <span
+        v-if="desc.length > 1"
+        class="collapse"
+        @click="toggle"
+      >
+        <i
+          v-if="showMore"
+          class="iconfont icon-shang"
+        ></i>
+        <i
+          v-else
+          class="iconfont icon-xia"
+        ></i>
+      </span>
     </div>
-    <div class="rcmd">
+    <div
+      v-else
+      class="rcmd"
+    >
       {{radio.rcmdText}}
     </div>
-    <div class="type">
+    <!-- <div class="type">
       最新上架
-    </div>
+    </div> -->
   </header-detail>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import HeaderDetail from "@/components/header-detail/HeaderDetail";
 import OperationBox from "@/components/operation-box/OperationBox";
 const props = defineProps({
@@ -51,6 +79,22 @@ const props = defineProps({
   }
 });
 
+const desc = computed(() => {
+  return props.radio.desc.trim().split('\n').filter(item => !!item);
+});
+const showMore = ref(false);
+
+const moreDesc = computed(() => {
+  if(showMore.value){
+    return desc.value.slice(1).join('\n');
+  }else {
+    return desc.value[1];
+  }
+});
+
+const toggle = () => {
+  showMore.value= !showMore.value;
+};
 const isFree = computed(() => {
   return props.radio.radioFeeType === 0;
 });
@@ -122,13 +166,41 @@ const price = computed(() => ((props.radio?.feeInfo?.price || 0)/100).toFixed(1)
   font-size: 12.5px;
   color: #333;
   margin-top: 20px;
-  .tag{
-    padding: 0 2px;
-    border-radius: 2px;
-    transform: translateX(-2px) scale(.9);
-    display: inline-block;
-    color: #c3473a;
-    border: 1px solid #db9089;
+  position: relative;
+  .content {
+    width: calc(100% - 20px);
+    white-space: pre-wrap;
+    .line {
+      line-height: 25px;
+      .tag{
+        padding: 0 2px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 2px;
+        transform: translateX(-2px) scale(.9);
+        display: inline-block;
+        color: #c3473a;
+        border: 1px solid #db9089;
+      }
+    }
+
+    .more {
+      margin-top: 20px;
+      line-height: 25px;
+    }
+  }
+  
+  .collapse {
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 0;
+    vertical-align: bottom;
+    color: #999;
   }
 }
 

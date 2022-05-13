@@ -1,5 +1,8 @@
 <template>
-  <li class="radio-item-box">
+  <li
+    class="radio-item-box"
+    @click="toRadioDetail(radio.id)"
+  >
     <div class="cover-box">
       <img
         :src="$formatImgSize(radio.picUrl, 100, 100)"
@@ -23,7 +26,7 @@
 </template>
 
 <script setup>
-import { markKeywords } from "@/util/methods";
+import { markKeywords, toRadioDetail } from "@/util/methods";
 const props = defineProps({
   radio: {
     type: Object,

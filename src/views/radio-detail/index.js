@@ -1,7 +1,7 @@
 /*
  * @Author: BlackStar
  * @Date: 2022-04-12 17:05:16
- * @LastEditTime: 2022-05-12 14:24:52
+ * @LastEditTime: 2022-05-13 15:39:39
  * @FilePath: /cloud-music-v3/src/views/radio-detail/index.js
  * @Description: 
  */
@@ -20,7 +20,7 @@ const allTab = [
   },
 ];
 
-import { reactive, toRefs, defineAsyncComponent, computed } from "vue";
+import { reactive, toRefs, defineAsyncComponent } from "vue";
 import { radioApi } from "@/api";
 import { useRoute } from "vue-router";
 

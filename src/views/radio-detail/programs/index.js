@@ -5,7 +5,7 @@ export default function useData(rid) {
     currentPage: 1,
     pageSize: 100,
     totalCount: 0,
-    asc: true,
+    asc: false,
     list: [],
     loading: false
   });
