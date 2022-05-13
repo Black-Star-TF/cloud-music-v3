@@ -41,7 +41,7 @@
           {{ moreDesc }}
         </div>
       </div>
-      <span
+      <div
         v-if="desc.length > 1"
         class="collapse"
         @click="toggle"
@@ -54,7 +54,7 @@
           v-else
           class="iconfont icon-xia"
         ></i>
-      </span>
+      </div>
     </div>
     <div
       v-else
@@ -95,6 +95,7 @@ const moreDesc = computed(() => {
 const toggle = () => {
   showMore.value= !showMore.value;
 };
+
 const isFree = computed(() => {
   return props.radio.radioFeeType === 0;
 });

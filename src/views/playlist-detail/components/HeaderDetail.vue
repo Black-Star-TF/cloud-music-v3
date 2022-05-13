@@ -30,13 +30,41 @@
       v-if="playlist.description"
       class="desc"
     >
-      <span class="label">简介</span><span>：</span><span class="content">{{ playlist.description }}</span>
+      <div class="content-wrapper">
+        
+        <div
+          class="line"
+          :class="{'ellipsis1' : !showMore}"
+        >
+          <span class="label">简介</span><span>：</span><span class="content">{{ desc[0] }}</span>
+        </div>
+        <div
+          v-if="showMore"
+          class="more"
+        >
+          <span>{{ moreDesc }}</span>
+        </div>
+      </div>
+      <div
+        v-if="desc.length > 1"
+        class="collapse"
+        @click="toggle"
+      >
+        <i
+          v-if="showMore"
+          class="iconfont icon-shang"
+        ></i>
+        <i
+          v-else
+          class="iconfont icon-xia"
+        ></i>
+      </div>
     </div>
   </header-detail>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import dayjs from 'dayjs';
 import HeaderDetail from "@/components/header-detail/HeaderDetail";
 import OperationBox from "@/components/operation-box/OperationBox";
@@ -60,6 +88,20 @@ const operationOption = computed(() => {
     subscribedCount: props.playlist.subscribedCount || 0,
   };
 });
+
+const desc =computed(() => {
+  return props.playlist.description.trim().split('\n').filter(item => !!item);
+});
+
+const showMore = ref(false);
+
+const moreDesc = computed(() => {
+  return desc.value.slice(1).join('\n');
+});
+
+const toggle = () => {
+  showMore.value= !showMore.value;
+};
 </script>
 
 <style lang="less" scoped>
@@ -127,24 +169,31 @@ const operationOption = computed(() => {
   }
 }
 .desc{
-  font-size: 12px;
-  line-height: 22px;
-  white-space: pre;
-  height: 22px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #333;
-  .label{
-    width: 36px;
-    text-align-last: justify;
-    display: inline-block;
-  }
-  .content{
-    color: #666;
-  }
-  &.visible{
-    height: unset;
+  font-size: 12.5px;
+  line-height: 25px;
+  position: relative;
+  .content-wrapper {
+    width: calc(100% - 20px);
     white-space: pre-wrap;
+    color: #666;
+    .label{
+      width: 36px;
+      color: #333;
+      text-align-last: justify;
+      display: inline-block;
+    }
+  }
+  .collapse {
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 0;
+    vertical-align: bottom;
+    color: #999;
   }
 }
 </style>
